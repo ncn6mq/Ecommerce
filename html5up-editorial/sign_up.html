@@ -38,13 +38,13 @@
 
 									<h3>Fill out this form to join SimplEggs</h3>
 
-									<form method="post" action="#">
+									<form method="post" action="sign_up.html">
 									  <div class="row gtr-uniform">
 									    <div class="col-6 col-12-xsmall">
-									      <input type="text" name="demo-name" id="demo-name" value="" placeholder="Full Name" />
+									      <input type="text" name="first" id="first" value="" placeholder="First Name" />
 									    </div>
 									    <div class="col-6 col-12-xsmall">
-									      <input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
+									      <input type="email" name="last" id="last" value="" placeholder="Last Name" />
 									    </div>
 									    <!-- Break -->
 									    <div class="col-12">
@@ -58,15 +58,29 @@
 									    </div>
 									    <!-- Break -->
 									    <div class="col-12">
-									      <input type="text" name="username" id="username" value="" placeholder="Username"</input>
+									      <input type="text" name="email" id="email" value="" placeholder="Email"</input>
 									    </div>
 									    <div class="col-12">
-									      <input type="password" name="password1" id="password1" value="" placeholder="Password" />
+									      <input type="password" name="password" id="password" value="" placeholder="Password" />
 									    </div>
 									     <!-- Break -->
 									    <div class="col-12">
 									      <input type="password" name="password-confirm" id="password-confirm" value="" placeholder="Re-Enter your Password" />
 									    </div>
+										<!-- Break -->
+										<div class="col-6 col-12-xsmall">
+										  <input type="text" name="address" id="address" value="" placeholder="Address" />
+										</div>
+										<div class="col-6 col-12-xsmall">
+										  <input type="email" name="city" id="city" value="" placeholder="City" />
+										</div>
+									    <!-- Break -->
+										<div class="col-6 col-12-xsmall">
+										  <input type="text" name="state" id="state" value="" placeholder="State" />
+										</div>
+										<div class="col-6 col-12-xsmall">
+										  <input type="email" name="zip" id="zip" value="" placeholder="Zip Code" />
+										</div>
 									    <!-- Break -->
 									    <div class="col-12">
 									      <ul class="actions">
@@ -137,3 +151,22 @@
 
 	</body>
 </html>
+
+<?php
+    $db = pg_connect("host=ec2-54-163-255-1.compute-1.amazonaws.com port=5432 dbname=d78258r6re094d user=jseqocrbelozuq password=ac7f8466905190ad89da55ed63559f6b09331b96164ac16cfcd27ea02af30536");
+    if (!$db) {
+        echo "<script type='text/javascript'>alert('an error occured connecting');</script>";
+        exit;
+    }
+    $query = "INSERT INTO user_database VALUES (
+        '$_POST[first]',
+        '$_POST[last]',
+        '$_POST[address]',
+        '$_POST[city]',
+        '$_POST[state]',
+        '$_POST[zip]',
+        '$_POST[password]',
+        '$_POST[email]')";
+    $result = pg_query($db, $query);
+?>
+
