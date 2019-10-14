@@ -360,21 +360,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	</body>
 </html>
     
-<?php
-    $db = pg_connect("host=ec2-54-163-255-1.compute-1.amazonaws.com port=5432 dbname=d78258r6re094d user=jseqocrbelozuq password=ac7f8466905190ad89da55ed63559f6b09331b96164ac16cfcd27ea02af30536");
-    if (!$db) {
-        echo "<script type='text/javascript'>alert('an error occured connecting');</script>";
-        exit;
-    }
-    $query = "INSERT INTO user_database VALUES (
-        '$_POST[first]',
-        '$_POST[last]',
-        '$_POST[address]',
-        '$_POST[city]',
-        '$_POST[state]',
-        '$_POST[zip]',
-        '$_POST[password]',
-        '$_POST[email]')";
-    $result = pg_query($db, $query);
-?>
+<!-- <?php
+    // $db = pg_connect("host=ec2-54-163-255-1.compute-1.amazonaws.com port=5432 dbname=d78258r6re094d user=jseqocrbelozuq password=ac7f8466905190ad89da55ed63559f6b09331b96164ac16cfcd27ea02af30536");
+    // if (!$db) {
+    //     echo "<script type='text/javascript'>alert('an error occured connecting');</script>";
+    //     exit;
+    // }
+    // $query = "INSERT INTO user_database VALUES (
+    //     '$_POST[first]',
+    //     '$_POST[last]',
+    //     '$_POST[address]',
+    //     '$_POST[city]',
+    //     '$_POST[state]',
+    //     '$_POST[zip]',
+    //     '$_POST[password]',
+    //     '$_POST[email]')";
+    // $result = pg_query($db, $query);
+?> -->
         
