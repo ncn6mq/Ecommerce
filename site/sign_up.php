@@ -3,7 +3,78 @@
 	Editorial by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+  -->
+
+
+<?php
+// define variables and set to empty values
+$firstErr = $emailErr = $lastErr = $passwordErr = $addressErr = $cityErr = $stateErr = $zipErr = $emailExistErr = "";
+$first = $email = $last = $password = $address = $city = $state = $zip = $hashedPass = "";
+$someErr = False;
+
+//See if request method is post
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["first"])) {
+    $nameErr = "First name is required";
+    $someErr = True;
+  } else {
+    $first = ($_POST["first"]);
+  }
+
+  if (empty($_POST["email"])) {
+    $emailErr = "Email is incorrectly input";
+    $someErr = True;
+  } else {
+    $email = ($_POST["email"]);
+  }
+
+  if (empty($_POST["last"])) {
+    $lastErr = "Last name is required";
+    $someErr = True;
+  } else {
+    $last = ($_POST["last"]);
+  }
+
+  if (empty($_POST["password"]) Or empty($_POST["password-confirm"]) Or ($_POST['password'] != $_POST['password-confirm'])) {
+    $passwordErr = "One password was empty or they did not match";
+    $someErr = True;
+  } else {
+    $password = ($_POST["password"]);
+    $hashedPass = password_hash($password, PASSWORD_DEFAULT);
+  }
+  
+  if (empty($_POST["address"])) {
+    $addressErr = "Address is required";
+    $someErr = True;
+  } else {
+    $address = ($_POST["address"]);
+  }
+  
+ if (empty($_POST["city"])) {
+    $cityErr = "City is required";
+    $someErr = True;
+  } else {
+    $city = ($_POST["city"]);
+  }
+  
+ if (empty($_POST["state-category"])) {
+    $stateErr = "State must be selected";
+    $someErr = True;
+  } else {
+    $state  = ($_POST["state-category"]);
+  }
+
+  if(empty($_POST["zip"]) Or !preg_match('#[0-9]{5}#', $_POST["zip"])) {
+  $zipErr = "Incorrect zip code format";
+  $someErr = True;
+  }
+  else {
+  $zip = $_POST["zip"];
+} 
+}
+?>
+
+
 <html>
 	<head>
 		<title>SimplEggs - Sign Up</title>
@@ -193,6 +264,29 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
+	<?php
+//Check for some error, this is how I'm outputting it but I could output it further up
+			 if ($someErr) {
+			 echo "<h2>There was an error!</h2>";
+					 echo $firstErr;
+					 echo "</br>";
+					 echo $lastErr;
+					 echo "</br>";
+					 echo $emailErr;
+					 echo "</br>";
+					 echo $passwordErr;
+					 echo "</br>";
+					 echo $addressErr;
+					 echo "</br>";
+					 echo $cityErr;
+					 echo "</br>";
+					 echo $stateErr;
+					 echo "</br>";
+					 echo $zipErr;
+					 echo "</br>";
+					 }
+			?>
+			
 	</body>
 </html>
 
