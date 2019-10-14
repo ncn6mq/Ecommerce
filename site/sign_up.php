@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   if (empty($_POST["email"])) {
-    $emailErr = "Email is incorrectly input";
+    $emailErr = "Email cannot be blank";
     $someErr = True;
   } else {
     $email = ($_POST["email"]);
@@ -113,14 +113,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									  <div class="row gtr-uniform">
 									    <div class="col-6 col-12-xsmall">
 									      <input type="text" name="first" id="first" value="" placeholder="First Name" />
+									      <?php if ($someErr) {
+									       echo "
+									       <p>$firstErr</p>";
+                                                                               }
+                                                                              ?>
 									    </div>
 									    <div class="col-6 col-12-xsmall">
 									      <input type="text" name="last" id="last" value="" placeholder="Last Name" />
+									      <?php if ($someErr) {
+									       echo "
+									       <p>$lastErr</p>";
+                                                                               }
+                                                                              ?>
 									    </div>
 									    <!-- Break -->
 									    <!-- Break -->
 									    <div class="col-12">
 									      <input type="text" name="email" id="email" value="" placeholder="Email"</input>
+										  <?php if ($someErr) {
+										   echo "
+										   <p>$emailErr</p>";
+										   }
+										   ?>
 									    </div>
 									    <div class="col-12">
 									      <input type="password" name="password" id="password" value="" placeholder="Password" />
@@ -128,13 +143,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									     <!-- Break -->
 									    <div class="col-12">
 									      <input type="password" name="password-confirm" id="password-confirm" value="" placeholder="Re-Enter your Password" />
+									      <?php if ($someErr) {
+									       echo "
+									       <p>$passwordErr</p>";
+                                                                               }
+                                                                              ?>
 									    </div>
 										<!-- Break -->
 										<div class="col-6 col-12-xsmall">
 										  <input type="text" name="address" id="address" value="" placeholder="Address" />
+										  <?php if ($someErr) {
+										   echo "
+										   <p>$addressErr</p>";
+										   }
+										   ?>
 										</div>
 										<div class="col-6 col-12-xsmall">
 										  <input type="text" name="city" id="city" value="" placeholder="City" />
+										  <?php if ($someErr) {
+										   echo "
+										   <p>$cityErr</p>";
+										   }
+										   ?>
 										</div>
 									    <!-- Break -->
 										<div class="col-6 col-12-xsmall">
@@ -192,9 +222,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 										    <option value="WI">Wisconsin</option>
 										    <option value="WY">Wyoming</option>
 										  </select>
+										  <?php if ($someErr) {
+										   echo "
+										   <p>$stateErr</p>";
+										   }
+										   ?>
 										</div>
 										<div class="col-6 col-12-xsmall">
 										  <input type="text" name="zip" id="zip" value="" placeholder="Zip Code" />
+										  <?php if ($someErr) {
+										   echo "
+										   <p>$zipErr</p>";
+										   }
+										   ?>
 										</div>
 									    <!-- Break -->
 									    <div class="col-12">
