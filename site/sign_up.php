@@ -145,7 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									      <input type="text" name="first" id="first" value="" placeholder="First Name" />
 									      <?php if ($someErr) {
 									       echo "
-									       <p>$firstErr</p>";
+									       <p style="font-size:70%;color:red;">$firstErr</p>";
                                                                                }
                                                                               ?>
 									    </div>
@@ -153,7 +153,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									      <input type="text" name="last" id="last" value="" placeholder="Last Name" />
 									      <?php if ($someErr) {
 									       echo "
-									       <p>$lastErr</p>";
+									       <p style="font-size:70%;color:red;">$lastErr</p>";
                                                                                }
                                                                               ?>
 									    </div>
@@ -163,7 +163,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									      <input type="text" name="email" id="email" value="" placeholder="Email"</input>
 										  <?php if ($someErr) {
 										   echo "
-										   <p>$emailErr</p>";
+										   <p style="font-size:70%;color:red;">$emailErr</p>";
 										   }
 										   ?>
 									    </div>
@@ -175,7 +175,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									      <input type="password" name="password-confirm" id="password-confirm" value="" placeholder="Re-Enter your Password" />
 									      <?php if ($someErr) {
 									       echo "
-									       <p>$passwordErr</p>";
+									       <p style="font-size:70%;color:red;">$passwordErr</p>";
                                                                                }
                                                                               ?>
 									    </div>
@@ -184,7 +184,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 										  <input type="text" name="address" id="address" value="" placeholder="Address" />
 										  <?php if ($someErr) {
 										   echo "
-										   <p>$addressErr</p>";
+										   <p style="font-size:70%;color:red;">$addressErr</p>";
 										   }
 										   ?>
 										</div>
@@ -192,7 +192,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 										  <input type="text" name="city" id="city" value="" placeholder="City" />
 										  <?php if ($someErr) {
 										   echo "
-										   <p>$cityErr</p>";
+										   <p style="font-size:70%;color:red;">$cityErr</p>";
 										   }
 										   ?>
 										</div>
@@ -254,7 +254,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 										  </select>
 										  <?php if ($someErr) {
 										   echo "
-										   <p>$stateErr</p>";
+										   <p style="font-size:70%;color:red;">$stateErr</p>";
 										   }
 										   ?>
 										</div>
@@ -262,7 +262,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 										  <input type="text" name="zip" id="zip" value="" placeholder="Zip Code" />
 										  <?php if ($someErr) {
 										   echo "
-										   <p>$zipErr</p>";
+										   <p style="font-size:70%;color:red;">$zipErr</p>";
 										   }
 										   ?>
 										</div>
