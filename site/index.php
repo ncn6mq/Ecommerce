@@ -137,11 +137,11 @@
 						<h2>Menu</h2>
 					      </header>
 					      <ul>
-						<li><a href="index.html">Homepage</a></li>
-						<li><a href="login.html">Log In</a></li>
-						<li><a href="sign_up.html">Sign Up</a></li>
-						<li><a href="about_us.html">About Us</a></li>
-						<li><a href="contact_us.html">Contact Us</a></li>	
+						<li><a href="index.php">Homepage</a></li>
+						<li><a href="login.php">Log In</a></li>
+						<li><a href="sign_up.php">Sign Up</a></li>
+						<li><a href="about_us.php">About Us</a></li>
+						<li><a href="contact_us.php">Contact Us</a></li>	
 					      </ul>
 					    </nav>
 
