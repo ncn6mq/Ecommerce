@@ -90,14 +90,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(!$someErr) {
     //insert new user into database if no errors
         $query = "INSERT INTO user_database VALUES (
-            '$_POST[first]',
-            '$_POST[last]',
-            '$_POST[address]',
-            '$_POST[city]',
-            '$_POST[state]',
-            '$_POST[zip]',
-            '$_POST[password]',
-            '$_POST[email]')";
+            '$first',
+            '$last',
+            '$address',
+            '$city',
+            '$state',
+            '$zip',
+            '$hashedPass',
+            '$email')";
         $result = pg_query($db, $query);
     }
 }
