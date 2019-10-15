@@ -32,10 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //check if email is already in database
     //$email_query = "SELECT * FROM user_database WHERE email = '$_POST[email]'";
     //$email_result = pg_query($db, $email_query);
-    $email_result = pg_query_params($db, 'SELECT * FROM user_database WHERE email = $1', array("za3df@virginia.edu")); //$_POST[email]
+    $email_result = pg_query_params($db, 'SELECT * FROM user_database WHERE email = $1', $_POST[email]));
     $error2 = pg_last_error($dbconn);
-    $rows = pg_fetch_row($result);
-    $row = pg_num_rows($results);
+    $row = pg_fetch_row($result);
+    $rows = pg_num_rows($results);
         
     
     if (empty($_POST["email"])) {
