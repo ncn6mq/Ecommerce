@@ -34,7 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_result = pg_query($db, $email_query);
     $rows = pg_num_rows($result);
         
-    echo "<script type='text/javascript'>alert('$email_query');</script>";
     
     if (empty($_POST["email"])) {
         $emailErr = "Email is required";
@@ -122,6 +121,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
 	<body class="is-preload">
+        echo "<script type='text/javascript'>alert('$email_query');</script>";
+
 
 		<!-- Wrapper -->
 			<div id="wrapper">
