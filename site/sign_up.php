@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_result = pg_query($db, $email_query);
     $row = pg_fetch_row($result)
     
-    echo "<script type='text/javascript'>alert('$row');</script>";
+    //echo "<script type='text/javascript'>alert('$row');</script>";
     
     if (empty($_POST["email"])) {
         $emailErr = "Email is required";
@@ -277,9 +277,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									      <ul class="actions">
     										<li><input type="submit" value="Create your account!" class="primary" /></li>
     										<li><input type="reset" value="Reset" /></li>
-                                            <li><?php if (!$someErr) {
+                                            <li>
+                                            <?php if(!$someErr) {
                                              echo "<p style='font-size:150%;color:red;'>Account Successfully Created</p>";
-                                            }?></li>
+                                            }
+                                            ?></li>
 									      </ul>
 									    </div>
 									  </div>
