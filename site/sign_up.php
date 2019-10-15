@@ -30,8 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     //check if email is already in database
-    $email_query = "SELECT * FROM user_database WHERE email = '$_POST[email]';";
-    $email_result = pg_query($db, $email_query);
+    //$email_query = "SELECT * FROM user_database WHERE email = '$_POST[email]'";
+    //$email_result = pg_query($db, $email_query);
+    $email_result = pg_query_params($db, 'SELECT * FROM user_database WHERE email = $1', array($_POST[email]));
     $rows = pg_num_rows($result);
         
     
@@ -120,9 +121,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
 	<body class="is-preload">
-        <?php echo "<script >console.log('query: " . $email_query . "' );</script>"; ?>
-        <?php echo "<script >console.log('result: " . $email_result . "' );</script>"; ?>
-        <?php echo "<script >console.log('rows: " . $rows . "' );</script>"; ?>
+        <?php //echo "<script >console.log('query: " . $email_query . "' );</script>"; ?>
+        <?php echo "<script>console.log('result: " . $email_result . "' );</script>"; ?>
+        <?php echo "<script>console.log('rows: " . $rows . "' );</script>"; ?>
 
 
 
