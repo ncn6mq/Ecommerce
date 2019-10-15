@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_result = pg_query($db, $email_query);
     $rows = pg_num_rows($result);
     
-    echo "<script type='text/javascript'>alert('$rows');</script>";
+    echo "<script type='text/javascript'>alert('test = $rows');</script>";
     
     if (empty($_POST["email"])) {
         $emailErr = "Email is required";
