@@ -32,8 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_query = "SELECT COUNT(*) FROM user_database WHERE email = '$_POST[email]'";
     $email_result = pg_query($db, $email_query);
     
+    echo "<script type='text/javascript'>alert('$email_result');</script>";
+    
     if (empty($_POST["email"])) {
-        $emailErr = "Email is incorrectly input";
+        $emailErr = "Email is required";
         $someErr = True;
     } else if ($email_result == 0) {
         $emailErr = "Email already in use";
@@ -49,8 +51,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $last = ($_POST["last"]);
     }
     
-    if (empty($_POST["password"]) Or empty($_POST["password-confirm"]) Or ($_POST['password'] != $_POST['password-confirm'])) {
-        $passwordErr = "One password was empty or they did not match";
+    if (empty($_POST["password"])){ 
+        $passwordErr = "Password is required";
+        $someErr = True;
+    } else if($_POST['password'] != $_POST['password-confirm']) {
+        $passwordErr = "Passwords did not match";
         $someErr = True;
     } else {
         $password = ($_POST["password"]);
@@ -160,7 +165,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									    <!-- Break -->
 									    <!-- Break -->
 									    <div class="col-12">
-									      <input type="text" name="email" id="email" value="<?php echo $email ?>" placeholder="Email"</input>
+									      <input type="email" name="email" id="email" value="<?php echo $email ?>" placeholder="Email"</input>
 										  <?php if ($someErr) {
 										   echo "
 										   <p style='font-size:70%;color:red;'>$emailErr</p>";
