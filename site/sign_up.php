@@ -24,14 +24,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $first = ($_POST["first"]);
     }
-    
+
     //check if email is already in database
     //$email_query = "SELECT * FROM user_database WHERE email = '$_POST[email]'";
     //$email_result = pg_query($db, $email_query);
     $email_result = pg_query_params($db, 'SELECT * FROM user_database WHERE email = $1', array($_POST[email]));
     $rows = pg_num_rows($email_result);
-        
-    
+
+
     if (empty($_POST["email"])) {
         $emailErr = "Email is required";
         $someErr = True;
@@ -41,15 +41,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $email = ($_POST["email"]);
     }
-    
+
     if (empty($_POST["last"])) {
         $lastErr = "Last name is required";
         $someErr = True;
     } else {
         $last = ($_POST["last"]);
     }
-    
-    if (empty($_POST["password"])){ 
+
+    if (empty($_POST["password"])){
         $passwordErr = "Password is required";
         $someErr = True;
     } elseif($_POST['password'] != $_POST['password-confirm']) {
@@ -59,28 +59,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = ($_POST["password"]);
         $hashedPass = password_hash($password, PASSWORD_DEFAULT);
     }
-    
+
     if (empty($_POST["address"])) {
         $addressErr = "Address is required";
         $someErr = True;
     } else {
         $address = ($_POST["address"]);
     }
-    
-    if (empty($_POST["city"])) {
-        $cityErr = "City is required";
+
+    if (empty($_POST["city"]) Or !preg_match('#[a-zA-Z]+#', $_POST["zip"])) {
+        $cityErr = "Please type your city";
         $someErr = True;
     } else {
         $city = ($_POST["city"]);
     }
-    
+
     if (empty($_POST["state-category"])) {
         $stateErr = "State must be selected";
         $someErr = True;
     } else {
         $state  = ($_POST["state-category"]);
     }
-    
+
     if(empty($_POST["zip"]) Or !preg_match('#[0-9]{5}#', $_POST["zip"])) {
         $zipErr = "Incorrect zip code format";
         $someErr = True;
@@ -88,8 +88,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else {
         $zip = $_POST["zip"];
     }
-    
-    
+
+
     if(!$someErr) {
     //insert new user into database if no errors
         $query = "INSERT INTO user_database VALUES (
@@ -309,7 +309,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 						<li><a href="login.php">Log In</a></li>
 						<li><a href="sign_up.php">Sign Up</a></li>
 						<li><a href="about_us.php">About Us</a></li>
-						<li><a href="contact_us.php">Contact Us</a></li>	
+						<li><a href="contact_us.php">Contact Us</a></li>
 					      </ul>
 					    </nav>
 
@@ -343,7 +343,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<script src="assets/js/main.js"></script>
 	</body>
 </html>
-    
+
 <!-- <?php
     // $db = pg_connect("host=ec2-54-163-255-1.compute-1.amazonaws.com port=5432 dbname=d78258r6re094d user=jseqocrbelozuq password=ac7f8466905190ad89da55ed63559f6b09331b96164ac16cfcd27ea02af30536");
     // if (!$db) {
@@ -361,4 +361,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //     '$_POST[email]')";
     // $result = pg_query($db, $query);
 ?> -->
-        
