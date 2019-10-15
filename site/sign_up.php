@@ -121,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
 	<body class="is-preload">
-        echo "<script type='text/javascript'>alert('$email_query');</script>";
+        <?php echo "<script type='text/javascript'>alert('$email_query');</script>"; ?>
 
 
 		<!-- Wrapper -->
