@@ -142,7 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									<form method="post" action="sign_up.php">
 									  <div class="row gtr-uniform">
 									    <div class="col-6 col-12-xsmall">
-									      <input type="text" name="first" id="first" value="" placeholder="First Name" />
+									      <input type="text" name="first" id="first" value="<?php echo $first ?>" placeholder="First Name" />
 									      <?php if ($someErr) {
 									       echo "
 									       <p style='font-size:70%;color:red;'>$firstErr</p>";
@@ -333,30 +333,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
-	<?php
-//Check for some error, this is how I'm outputting it but I could output it further up
-			 if ($someErr) {
-			 echo "<h2>There was an error!</h2>";
-					 echo $firstErr;
-					 echo "</br>";
-					 echo $lastErr;
-					 echo "</br>";
-					 echo $emailErr;
-					 echo "</br>";
-					 echo $passwordErr;
-					 echo "</br>";
-					 echo $addressErr;
-					 echo "</br>";
-					 echo $cityErr;
-					 echo "</br>";
-					 echo $stateErr;
-					 echo "</br>";
-					 echo $zipErr;
-					 echo "</br>";
-					 }
-			?>
-			
 	</body>
 </html>
     
