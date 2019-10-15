@@ -33,13 +33,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_query = "SELECT * FROM user_database WHERE email = '$_POST[email]'";
     $email_result = pg_query($db, $email_query);
     $rows = pg_num_rows($result);
-    
-    echo "<script type='text/javascript'>alert('test = $rows');</script>";
-    
+        
     if (empty($_POST["email"])) {
         $emailErr = "Email is required";
         $someErr = True;
-    } else if ($rows > 0) {
+    } elseif ($rows > 0) {
         $emailErr = "Email already in use";
         $someErr = True;
     } else {
@@ -56,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["password"])){ 
         $passwordErr = "Password is required";
         $someErr = True;
-    } else if($_POST['password'] != $_POST['password-confirm']) {
+    } elseif($_POST['password'] != $_POST['password-confirm']) {
         $passwordErr = "Passwords did not match";
         $someErr = True;
     } else {
