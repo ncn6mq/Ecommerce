@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($_POST["first"])) {
-        $nameErr = "First name is required";
+        $firstErr = "First name is required";
         $someErr = True;
     } else {
         $first = ($_POST["first"]);
