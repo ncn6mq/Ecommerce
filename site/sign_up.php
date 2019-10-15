@@ -17,6 +17,7 @@ $account_created = False;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //open connection to database
     $db = pg_connect("host=ec2-54-163-255-1.compute-1.amazonaws.com port=5432 dbname=d78258r6re094d user=jseqocrbelozuq password=ac7f8466905190ad89da55ed63559f6b09331b96164ac16cfcd27ea02af30536");
+    $error1 = pg_last_error($dbconn);
     if (!$db) {
         echo "<script type='text/javascript'>alert('an error occured connecting');</script>";
     }
@@ -32,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //$email_query = "SELECT * FROM user_database WHERE email = '$_POST[email]'";
     //$email_result = pg_query($db, $email_query);
     $email_result = pg_query_params($db, 'SELECT * FROM user_database WHERE email = $1', array("za3df@virginia.edu")); //$_POST[email]
+    $error2 = pg_last_error($dbconn);
     $rows = pg_fetch_row($result);
     $row = pg_num_rows($results);
         
@@ -127,6 +129,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             //}
             //echo "<script >console.log('query: " . $email_query . "' );</script>";
             ?>
+        <?php echo "<script>console.log('error1: " . $error1 . "' );</script>"; ?>
+        <?php echo "<script>console.log('error2: " . $error2 . "' );</script>"; ?>
+
         <?php echo "<script>console.log('result: " . $email_result . "' );</script>"; ?>
         <?php echo "<script>console.log('row: " . print_r($row, true) . "' );</script>"; ?>
 
