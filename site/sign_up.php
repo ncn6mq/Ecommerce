@@ -32,14 +32,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //check if email is already in database
     $email_query = "SELECT COUNT(*) FROM user_database WHERE email = '$_POST[email]'";
     $email_result = pg_query($db, $email_query);
-    $row = pg_fetch_row($result);
+    $rows = pg_num_rows($result);
     
-    echo "<script type='text/javascript'>alert('$row[0]');</script>";
+    echo "<script type='text/javascript'>alert('$rows');</script>";
     
     if (empty($_POST["email"])) {
         $emailErr = "Email is required";
         $someErr = True;
-    } else if ($email_result == 0) {
+    } else if ($rows > 0) {
         $emailErr = "Email already in use";
         $someErr = True;
     } else {
