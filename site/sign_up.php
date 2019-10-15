@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     //check if email is already in database
-    $email_query = "SELECT * FROM user_database WHERE email = ''" . $_POST[email] . "';";
+    $email_query = "SELECT * FROM user_database WHERE email = '$_POST[email]';";
     $email_result = pg_query($db, $email_query);
     $rows = pg_num_rows($result);
         
