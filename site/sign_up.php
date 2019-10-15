@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     //check if email is already in database
-    $email_query = "SELECT * FROM user_database WHERE email = " . $_POST[email];
+    $email_query = "SELECT * FROM user_database WHERE email = ''" . $_POST[email] . "';";
     $email_result = pg_query($db, $email_query);
     $rows = pg_num_rows($result);
         
@@ -41,7 +41,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif ($rows > 0) {
         $emailErr = "Email already in use";
         $someErr = True;
-        echo "<script type='text/javascript'>alert('$email_query already used');</script>";
     } else {
         $email = ($_POST["email"]);
     }
@@ -122,6 +121,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	</head>
 	<body class="is-preload">
         <?php echo "<script >console.log('query: " . $email_query . "' );</script>"; ?>
+        <?php echo "<script >console.log('result: " . $email_result . "' );</script>"; ?>
+        <?php echo "<script >console.log('rows: " . $rows . "' );</script>"; ?>
+
 
 
 		<!-- Wrapper -->
