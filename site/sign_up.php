@@ -11,6 +11,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 $firstErr = $emailErr = $lastErr = $passwordErr = $addressErr = $cityErr = $stateErr = $zipErr = $emailExistErr = "";
 $first = $email = $last = $password = $address = $city = $state = $zip = $hashedPass = "";
 $someErr = False;
+$account_created = False;
 
 //See if request method is post
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -33,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_result = pg_query($db, $email_query);
     $row = pg_fetch_row($result);
     
-    echo "<script type='text/javascript'>alert('$row');</script>";
+    echo "<script type='text/javascript'>alert('$row[0]');</script>";
     
     if (empty($_POST["email"])) {
         $emailErr = "Email is required";
@@ -105,6 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             '$hashedPass',
             '$email')";
         $result = pg_query($db, $query);
+        $account_created = True;
     }
 }
 
@@ -278,7 +280,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     										<li><input type="submit" value="Create your account!" class="primary" /></li>
     										<li><input type="reset" value="Reset" /></li>
                                             <li>
-                                            <?php if(!$someErr) {
+                                            <?php if($account_created) {
                                              echo "<p style='font-size:150%;color:red;'>Account Successfully Created</p>";
                                             }
                                             ?></li>
