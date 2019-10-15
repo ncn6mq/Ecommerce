@@ -19,7 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $db = pg_connect("host=ec2-54-163-255-1.compute-1.amazonaws.com port=5432 dbname=d78258r6re094d user=jseqocrbelozuq password=ac7f8466905190ad89da55ed63559f6b09331b96164ac16cfcd27ea02af30536");
     if (!$db) {
         echo "<script type='text/javascript'>alert('an error occured connecting');</script>";
-        exit;
     }
 
     if (empty($_POST["first"])) {
@@ -124,7 +123,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php 
             if (!$db) {
                 echo "<script type='text/javascript'>alert('an error occured connecting to db');</script>";
-                exit;
             }
             //echo "<script >console.log('query: " . $email_query . "' );</script>";
             ?>
