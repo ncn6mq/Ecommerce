@@ -128,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             //echo "<script >console.log('query: " . $email_query . "' );</script>";
             ?>
         <?php echo "<script>console.log('result: " . $email_result . "' );</script>"; ?>
-        <?php echo "<script>console.log('row: " . print_r($row) . "' );</script>"; ?>
+        <?php echo "<script>console.log('row: " . print_r($row, true) . "' );</script>"; ?>
 
 
 
