@@ -40,6 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif ($rows > 0) {
         $emailErr = "Email already in use";
         $someErr = True;
+        echo "<script type='text/javascript'>alert('already used');</script>";
     } else {
         $email = ($_POST["email"]);
     }
