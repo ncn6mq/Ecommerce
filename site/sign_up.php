@@ -150,7 +150,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                                               ?>
 									    </div>
 									    <div class="col-6 col-12-xsmall">
-									      <input type="text" name="last" id="last" value="" placeholder="Last Name" />
+									      <input type="text" name="last" id="last" value="<?php echo $last ?>" placeholder="Last Name" />
 									      <?php if ($someErr) {
 									       echo "
 									       <p style='font-size:70%;color:red;'>$lastErr</p>";
@@ -160,7 +160,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									    <!-- Break -->
 									    <!-- Break -->
 									    <div class="col-12">
-									      <input type="text" name="email" id="email" value="" placeholder="Email"</input>
+									      <input type="text" name="email" id="email" value="<?php echo $email ?>" placeholder="Email"</input>
 										  <?php if ($someErr) {
 										   echo "
 										   <p style='font-size:70%;color:red;'>$emailErr</p>";
@@ -181,7 +181,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									    </div>
 										<!-- Break -->
 										<div class="col-6 col-12-xsmall">
-										  <input type="text" name="address" id="address" value="" placeholder="Address" />
+										  <input type="text" name="address" id="address" value="<?php echo $address ?>" placeholder="Address" />
 										  <?php if ($someErr) {
 										   echo "
 										   <p style='font-size:70%;color:red;'>$addressErr</p>";
@@ -189,7 +189,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 										   ?>
 										</div>
 										<div class="col-6 col-12-xsmall">
-										  <input type="text" name="city" id="city" value="" placeholder="City" />
+										  <input type="text" name="city" id="city" value="<?php echo $city ?>" placeholder="City" />
 										  <?php if ($someErr) {
 										   echo "
 										   <p style='font-size:70%;color:red;'>$cityErr</p>";
@@ -199,7 +199,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									    <!-- Break -->
 										<div class="col-6 col-12-xsmall">
 										  <select name="state-category" id="state-category">
-										    <option value="">Which state are you from?</option>
+										    <option value="" selected>State</option>
 										    <option value="AL">Alabama</option>
 										    <option value="AK">Alaska</option>
 										    <option value="AZ">Arizona</option>
@@ -259,7 +259,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 										   ?>
 										</div>
 										<div class="col-6 col-12-xsmall">
-										  <input type="text" name="zip" id="zip" value="" placeholder="Zip Code" />
+										  <input type="text" name="zip" id="zip" value="<?php echo $zip ?>" placeholder="Zip Code" />
 										  <?php if ($someErr) {
 										   echo "
 										   <p style='font-size:70%;color:red;'>$zipErr</p>";
