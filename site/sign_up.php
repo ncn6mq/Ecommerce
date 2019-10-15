@@ -34,8 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //$email_result = pg_query($db, $email_query);
     $email_result = pg_query_params($db, 'SELECT * FROM user_database WHERE email = $1', array($_POST[email]));
     $error2 = pg_last_error($dbconn);
-    $row = pg_fetch_row($result);
-    $rows = pg_num_rows($results);
+    $row = pg_fetch_row($email_result);
+    $rows = pg_num_rows($email_result);
         
     
     if (empty($_POST["email"])) {
