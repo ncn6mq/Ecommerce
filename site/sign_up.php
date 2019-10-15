@@ -277,11 +277,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									      <ul class="actions">
     										<li><input type="submit" value="Create your account!" class="primary" /></li>
     										<li><input type="reset" value="Reset" /></li>
-                                            <li>
-                                            <?php if(!$someErr) {
-                                             echo "<p style='font-size:150%;color:red;'>Account Successfully Created</p>";
-                                            }
-                                            ?></li>
 									      </ul>
 									    </div>
 									  </div>
