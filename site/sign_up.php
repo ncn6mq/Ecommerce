@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $address = ($_POST["address"]);
     }
 
-    if (empty($_POST["city"]) Or !preg_match('#[a-zA-Z]+#', $_POST["zip"])) {
+    if (empty($_POST["city"])) {
         $cityErr = "Please type your city";
         $someErr = True;
     } else {
