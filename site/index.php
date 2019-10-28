@@ -1,7 +1,30 @@
 <!DOCTYPE HTML>
 <!--
 	Homepage for SimplEggs
--->
+  -->
+<?php
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => "https://api.coindesk.com/v1/bpi/currentprice/USD.json",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "GET",
+  CURLOPT_HTTPHEADER => array(
+    "cache-control: no-cache"
+  ),
+));
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+$response = json_decode($response, true);
+echo 'current price:'. $response;
+?>
+
 <html>
 	<head>
 		<title>SimplEggs Homepage</title>
@@ -72,6 +95,11 @@
 												<h3>Save Money</h3>
 												<p>The average American consumes 284 eggs per year.  We are offering you the supplies to raise your own eggs and we will even buy up your unused quantities.</p>
 											</div>
+										</article>
+										<article>
+										  <div class="content">
+										    <h3>Current Price: </h3>
+										    <p>We charge a constant price of $10/month for feed and all other amenities for your chicken</p>
 										</article>
 									</div>
 								</section>
