@@ -45,7 +45,7 @@ if (array_key_exists('user-message', $_POST)) {
     //Put the submitter's address in a reply-to header
     //This will fail if the address provided is invalid,
     //in which case we should ignore the whole request
-    $mail->addReplyTo('simple.eggs.biz@gmail.com', 'Simple Eggs2'); 
+    $mail->addReplyTo('kheese123@gmail.com', 'Simple Eggs2'); 
     if ($mail->addReplyTo($_POST['email'], $_POST['name'])) {
         $mail->Subject = 'PHPMailer contact form';
         //Keep it simple - don't use HTML
