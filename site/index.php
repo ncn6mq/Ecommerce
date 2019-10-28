@@ -23,7 +23,33 @@ curl_close($curl);
 
 $response = json_decode($response, true);
 $money_rate = $response['bpi']['USD']['rate'];
-echo 'current price:'. $money_rate;
+$cost_per_order = 10/$money_rate;
+
+?>
+
+<?php
+$curl2 = curl_init();
+
+curl_setopt_array($curl2, array(
+  CURLOPT_URL => "https://api.coindesk.com/v1/bpi/currentprice/USD.json",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "GET",
+  CURLOPT_HTTPHEADER => array(
+    "cache-control: no-cache"
+  ),
+));
+
+$response2 = curl_exec($curl);
+$err2 = curl_error($curl);
+
+curl_close($curl);
+
+$response2 = json_decode($response2, true);
+$money_rate2 = $response2['data']['rates']['USD'];
+$cost_per_order2 = 10/$money_rate;
+
 ?>
 
 <html>
@@ -99,8 +125,9 @@ echo 'current price:'. $money_rate;
 										</article>
 										<article>
 										  <div class="content">
-										    <h3>Current Price: </h3>
-										    <p>We charge a constant price of $10/month for feed and all other amenities for your chicken</p>
+										    <h3>Current Price: <?php echo $cost_per_order ?> Bitcoin</h3>
+										    <h3><?php echo $cost_per_order2 ?> Bitcash</h3>
+										    <p>We charge a constant price of $10/month for feed and all other amenities for your chicken.  These prices fluctuate in terms of bitcoin so we have converted it for you right here</p>
 										</article>
 									</div>
 								</section>
