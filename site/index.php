@@ -22,7 +22,8 @@ $err = curl_error($curl);
 curl_close($curl);
 
 $response = json_decode($response, true);
-echo 'current price:'. $response['bpi'];
+$money_rate = $response['bpi']['USD']['rate'];
+echo 'current price:'. $money_rate;
 ?>
 
 <html>
