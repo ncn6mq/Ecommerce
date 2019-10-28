@@ -48,7 +48,7 @@ curl_close($curl);
 
 $response2 = json_decode($response2, true);
 $money_rate2 = $response2['data']['rates']['USD'];
-$cost_per_order2 = 10/$money_rate;
+$cost_per_order2 = 10/$money_rate2;
 
 ?>
 
@@ -125,8 +125,10 @@ $cost_per_order2 = 10/$money_rate;
 										</article>
 										<article>
 										  <div class="content">
-										    <h3>Current Price: <?php echo $cost_per_order ?> Bitcoin</h3>
-										    <h3><?php echo $cost_per_order2 ?> Bitcash</h3>
+										    <h3>Bitcoin price: $<?php echo $money_rate ?></h3>
+										    <h3>SimplEggs subscription cost: <?php echo $cost_per_order ?> Bitcoin</h3>
+										    <h3>Bitcash price: $<?php echo $money_rate2 ?> Bitcash</h3>
+										    <h3>SimplEggs subscription cost: <?php echo $cost_per_order2 ?> Bitcash</h3>
 										    <p>We charge a constant price of $10/month for feed and all other amenities for your chicken.  These prices fluctuate in terms of bitcoin so we have converted it for you right here</p>
 										</article>
 									</div>
