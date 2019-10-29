@@ -6,7 +6,7 @@
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.coindesk.com/v1/bpi/currentprice/USD.json",
+  CURLOPT_URL => "https://api.coinbase.com/v2/exchange-rates?currency=BTC",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
@@ -22,8 +22,12 @@ $err = curl_error($curl);
 curl_close($curl);
 
 $response = json_decode($response, true);
-$money_rate = $response['bpi']['USD']['rate'];
-$cost_per_order = 10/$money_rate;
+$money_rate =  $response['data']['rates']['USD'];
+$money_string = str_replace( ',', '', $money_rate );
+$money_int = (int) $money_string;
+$cost_per_order = (10)/$money_int;
+$str_cost = (string) $cost_per_order;
+$final_cost = substr($str_cost, 0, 7);
 
 ?>
 
@@ -31,7 +35,7 @@ $cost_per_order = 10/$money_rate;
 $curl2 = curl_init();
 
 curl_setopt_array($curl2, array(
-  CURLOPT_URL => "https://api.coindesk.com/v1/bpi/currentprice/USD.json",
+  CURLOPT_URL => "https://api.coinbase.com/v2/exchange-rates?currency=BCH",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
@@ -41,14 +45,17 @@ curl_setopt_array($curl2, array(
   ),
 ));
 
-$response2 = curl_exec($curl);
-$err2 = curl_error($curl);
+$response2 = curl_exec($curl2);
+$err2 = curl_error($curl2);
 
-curl_close($curl);
+curl_close($curl2);
 
 $response2 = json_decode($response2, true);
-$money_rate2 = $response2['data']['rates']['USD'];
+//echo $response2['data']['rates']['USD'];
+$money_rate2 =  number_format($response2['data']['rates']['USD']);
 $cost_per_order2 = 10/$money_rate2;
+$str_cost_2 = (string) $cost_per_order2;
+$final_cost2 = substr($str_cost_2, 0, 7);
 
 ?>
 
@@ -125,10 +132,10 @@ $cost_per_order2 = 10/$money_rate2;
 										</article>
 										<article>
 										  <div class="content">
-										    <h3>Bitcoin price: $<?php echo $money_rate ?></h3>
-										    <h3>SimplEggs subscription cost: <?php echo $cost_per_order ?> Bitcoin</h3>
-										    <h3>Bitcash price: $<?php echo $money_rate2 ?> Bitcash</h3>
-										    <h3>SimplEggs subscription cost: <?php echo $cost_per_order2 ?> Bitcash</h3>
+										    <h4>Bitcoin price: $<?php echo $money_rate ?></h4>
+										    <h4>SimplEggs subscription cost: <?php echo $final_cost ?> Bitcoin</h4>
+										    <h4>Bitcash price: $<?php echo $money_rate2 ?> Bitcash</h4>
+										    <h4>SimplEggs subscription cost: <?php echo $final_cost2 ?> Bitcash</h4>
 										    <p>We charge a constant price of $10/month for feed and all other amenities for your chicken.  These prices fluctuate in terms of bitcoin so we have converted it for you right here</p>
 										</article>
 									</div>
