@@ -43,10 +43,10 @@
 										<p><b>$35 or xxxBTC</b></p>
 										
 										<form action="https://test.bitpay.com/checkout" method="post">
-										 	<input type="hidden" name="action" value="checkout" />
-										 	<input type="hidden" name="posData" value="" />
-										 	<input type="hidden" name="data" value="U/xlGWilKTn/K0HHQ+UwAEJ3f3p8VWQhgnE1MhesaA48x+QSdwxws9qvfKYfcz09SbpmFPj8G3LslXk0yO2YINVLrCaGNT77UC40/+wVOHOwtjDF+d9L5sJOjg6GoHvVJibhx6OWTKjXtgcR+Au5384n3gDQYJjTppRB6cr5zUjxb8dTGFFWNKl6Dg+fLAKU" />
-											<input type="image" src="https://bitpay.com/cdn/en_US/bp-btn-pay-currencies.svg" name="submit" style="width: 210px" alt="BitPay, the easy way to pay with bitcoins.">
+											<input type="hidden" name="action" value="checkout" />
+											<input type="hidden" name="posData" value="" />
+											<input type="hidden" name="data" value="KtqWOh5dTqAVRdlzErq6VzRshYRC8epNDhWv9JRZr+2jI5eEI/Crk0fNFYKk4Zx5lYG1ggNYQ5X6bJIo74V56n6TKWqWZTvNOukAUx8tpKDxGyQUjW5MOuz8kCUgq7JjhsLLgLJGoeQFHGCL1GbZzS9w10Wg5gZzbh4IhD6RYBG/zm6hz42wsTokRH2Oy5wx" />
+											<input type="image" src="https://test.bitpay.com/cdn/en_US/bp-btn-pay-currencies.svg" name="submit" style="width: 210px" alt="BitPay, the easy way to pay with bitcoins.">
 										</form>
 									</div>
 									<span class="image object">
@@ -64,8 +64,8 @@
 										<form action="https://test.bitpay.com/checkout" method="post">
 											<input type="hidden" name="action" value="checkout" />
 											<input type="hidden" name="posData" value="" />
-											<input type="hidden" name="data" value="U/xlGWilKTn/K0HHQ+UwAEJ3f3p8VWQhgnE1MhesaA5LbPXOh5uHCjYunN6pk6sQ16m6XtK21FCTyMF3NIAMj8ZrKhBu2XZeURDltZVZj4AVb77TSqgIvy/FQb849MFEjT6NFxKXPc2dqHRz5nu3PtZuL5A8IwDbMZ7oDLGymKXWnUJhgmnkcUTJUESUhWCe" />
-											<input type="image" src="https://bitpay.com/cdn/en_US/bp-btn-pay-currencies.svg" name="submit" style="width: 210px" alt="BitPay, the easy way to pay with bitcoins.">
+											<input type="hidden" name="data" value="KtqWOh5dTqAVRdlzErq6VzRshYRC8epNDhWv9JRZr+0H0r+K6/Tw42/19xVnmpW68ggrSHTGqlIZOOyEyNEBsOYuPUCzr6NjN7L1ChCF5gV5BEnoMXrv192e7Svqfide9jObuqbHzZYHL6QUQwAGd1+G1FChrECD6nUT2QZdYDUOXUkbmeFzdCxiL5P2I+u9" />
+											<input type="image" src="https://test.bitpay.com/cdn/en_US/bp-btn-pay-currencies.svg" name="submit" style="width: 210px" alt="BitPay, the easy way to pay with bitcoins.">
 										</form>
 									</div>
 									<span class="image object">
