@@ -103,38 +103,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             '$email')";
             $result = pg_query($db, $query);
             $account_created = True;
-            // date_default_timezone_set('Etc/UTC');
-            // 
-            // 
-            // // Send confirmation email
-            // use PHPMailer\PHPMailer\PHPMailer;
-            // use PHPMailer\PHPMailer\SMTP;
-            // use PHPMailer\PHPMailer\Exception;
-            // 
-            // require 'vendor/autoload.php';
-            // $mail = new PHPMailer(true);
-            // 
-            // 
-            // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
-            // $mail->isSMTP();                                            // Send using SMTP
-            // $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
-            // $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-            // $mail->Username   = 'simple.eggs.biz@gmail.com';                     // SMTP username
-            // $mail->Password   = 'CS4753Ecommerce';                               // SMTP password
-            // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-            // $mail->Port       = 587;                                    // TCP port to connect to
-            // 
-            // //Recipients
-            // $mail->setFrom('simple.eggs.biz@gmail.com', 'Simple Eggs');
-            // $mail->addAddress($_POST[email], $_POST[first]);     // Add a recipient
-            // $mail->isHTML(true);                                  // Set email format to HTML
-            // $mail->Subject = 'Thank You for signing up!';
-            // $mail->Body    = 'Thanks for signing up for <b>SimplEggs!</b> We will get your eggs to you in no time';
-            // $mail->AltBody = 'Thanks for signing up for simpleggs!';
-            // 
-            // $mail->send();
-            
-        }
+}
+if($account_created) {
+    date_default_timezone_set('Etc/UTC');
+    require '../vendor/autoload.php';
+
+    //Create a new PHPMailer instance;
+    $mail = new PHPMailer;
+
+    //Tell PHPMailer to use SMTP - requires a local mail server;
+    //Faster and safer than using mail();
+    $mail->isSMTP();
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+    $mail->Host = 'smtp.gmail.com';
+    $mail->Port = 587;
+
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    //Whether to use SMTP authentication
+    $mail->SMTPAuth = true;
+    //Username to use for SMTP authentication - use full email address for gmail
+    $mail->Username = 'simple.eggs.biz@gmail.com';
+    //Password to use for SMTP authentication
+    $mail->Password = 'CS4753Ecommerce';
+    //Set who the message is to be sent from
+    //Use a fixed address in your own domain as the from address
+    //**DO NOT** use the submitter's address here as it will be forgery
+    //and will cause your messages to fail SPF checks
+    $mail->setFrom('simple.eggs.biz@gmail.com', 'Simple Eggs');
+    //Send the message to yourself, or whoever should receive contact for submissions
+    $mail->addAddress('simple.eggs.biz@gmail.com', 'Simple Eggs');
+    //Put the submitter's address in a reply-to header
+    //This will fail if the address provided is invalid,
+    //in which case we should ignore the whole request
+$mail->addReplyTo($email, $first);
+$mail->Subject = 'Thank you for signing up for SimplEggs!';
+$mail->Body = 'Thanks for signing up for SimplEggs! We look forward to collaborating with you to increase the presence of locally produced eggs!';
+$mail->send();
+}
     }
     
     ?>
