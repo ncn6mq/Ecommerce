@@ -135,6 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //and will cause your messages to fail SPF checks
     //Send the message to yourself, or whoever should receive contact for submissions
     $mail->addAddress('simple.eggs.biz@gmail.com', 'Simple Eggs');
+    $mail->addAddress($email, $first);
     //Put the submitter's address in a reply-to header
     //This will fail if the address provided is invalid,
     //in which case we should ignore the whole request
