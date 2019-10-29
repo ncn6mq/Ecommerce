@@ -3,7 +3,40 @@
 	Editorial by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+  -->
+
+<?php
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => "https://api.coinbase.com/v2/exchange-rates?currency=BTC",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "GET",
+  CURLOPT_HTTPHEADER => array(
+    "cache-control: no-cache"
+  ),
+));
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+$response = json_decode($response, true);
+$money_rate =  $response['data']['rates']['USD'];
+$money_string = str_replace( ',', '', $money_rate );
+$money_int = (int) $money_string;
+$cost_per_order = (250)/$money_int;
+$str_cost = (string) $cost_per_order;
+$final_cost_one_time = substr($str_cost, 0, 5);
+$cost_per_order2 = (35)/$money_int;
+$str_cost2 = (string) $cost_per_order2;
+$final_cost_subscription = substr($str_cost2, 0, 5);
+
+?>
+
 <html>
 	<head>
 		<title>SimplEggs - Log In</title>
@@ -40,7 +73,7 @@
 											<h2>Monthly Feed Shipment</h2>
 										</header>
 										<p>Every month, we will deliver chicken feed right to your door. You will never need to leave the confort of your own home to go buy feed. Purchase monthly or just whenever your feed storage gets low.</p>
-										<p><b>$35 or xxxBTC</b></p>
+										<p><b>$35 or <?php echo $final_cost_subscription ?> BTC</b></p>
 										
 										<form action="https://test.bitpay.com/checkout" method="post">
 											<input type="hidden" name="action" value="checkout" />
@@ -59,7 +92,7 @@
 											<h2>Chicken Coop</h2>
 										</header>
 										<p>We will deliver the materials and instructions straight to you. All you need is a hammer, screwdriver, and a few hours to set it up.</p>
-										<p><b>$250 or xxxBTC</b></p>
+										<p><b>$250 or <?php echo $final_cost_one_time ?> BTC</b></p>
 										
 										<form action="https://test.bitpay.com/checkout" method="post">
 											<input type="hidden" name="action" value="checkout" />

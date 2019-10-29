@@ -25,7 +25,7 @@ $response = json_decode($response, true);
 $money_rate =  $response['data']['rates']['USD'];
 $money_string = str_replace( ',', '', $money_rate );
 $money_int = (int) $money_string;
-$cost_per_order = (10)/$money_int;
+$cost_per_order = (35)/$money_int;
 $str_cost = (string) $cost_per_order;
 $final_cost = substr($str_cost, 0, 7);
 
@@ -53,7 +53,7 @@ curl_close($curl2);
 $response2 = json_decode($response2, true);
 //echo $response2['data']['rates']['USD'];
 $money_rate2 =  number_format($response2['data']['rates']['USD']);
-$cost_per_order2 = 10/$money_rate2;
+$cost_per_order2 = (35)/$money_rate2;
 $str_cost_2 = (string) $cost_per_order2;
 $final_cost2 = substr($str_cost_2, 0, 7);
 
@@ -133,7 +133,7 @@ $final_cost2 = substr($str_cost_2, 0, 7);
 										<article>
 										  <div class="content">
 										    <h4>Bitcoin price: $<?php echo $money_rate ?> per Bitcoin</h4>
-										    <h4>SimplEggs subscription cost: <?php echo $final_cost ?>Bitcoin</h4>
+										    <h4>SimplEggs subscription cost: <?php echo $final_cost ?> Bitcoin</h4>
 										    <h4>Bitcash price: $<?php echo $money_rate2 ?> per Bitcash</h4>
 										    <h4>SimplEggs subscription cost: <?php echo $final_cost2 ?> Bitcash</h4>
 										    <p>We charge a constant price of $10/month for feed and all other amenities for your chicken.  These prices fluctuate in terms of bitcoin so we have converted it for you right here</p>
