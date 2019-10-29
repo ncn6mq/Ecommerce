@@ -13,6 +13,12 @@ $first = $email = $last = $password = $address = $city = $state = $zip = $hashed
 $someErr = False;
 $account_created = False;
 
+require '../vendor/autoload.php';
+//Create a new PHPMailer instance;
+$mail = new PHPMailer;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+
 //See if request method is post
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //open connection to database
@@ -110,10 +116,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
  if($account_created) {
     date_default_timezone_set('Etc/UTC');
-    require '../vendor/autoload.php';
-
-    //Create a new PHPMailer instance;
-    $mail = new PHPMailer;
 
     //Tell PHPMailer to use SMTP - requires a local mail server;
     //Faster and safer than using mail();
