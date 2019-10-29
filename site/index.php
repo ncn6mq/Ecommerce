@@ -132,10 +132,10 @@ $final_cost2 = substr($str_cost_2, 0, 7);
 										</article>
 										<article>
 										  <div class="content">
-										    <h5>Bitcoin price: $<?php echo $money_rate ?> per Bitcoin</h5>
-										    <h5>SimplEggs subscription cost: <?php echo $final_cost ?>Bitcoin</h5>
-										    <h5>Bitcash price: $<?php echo $money_rate2 ?> per Bitcash</h5>
-										    <h5>SimplEggs subscription cost: <?php echo $final_cost2 ?> Bitcash</h5>
+										    <h4>Bitcoin price: $<?php echo $money_rate ?> per Bitcoin</h4>
+										    <h4>SimplEggs subscription cost: <?php echo $final_cost ?>Bitcoin</h4>
+										    <h4>Bitcash price: $<?php echo $money_rate2 ?> per Bitcash</h4>
+										    <h4>SimplEggs subscription cost: <?php echo $final_cost2 ?> Bitcash</h4>
 										    <p>We charge a constant price of $10/month for feed and all other amenities for your chicken.  These prices fluctuate in terms of bitcoin so we have converted it for you right here</p>
 										</article>
 									</div>
