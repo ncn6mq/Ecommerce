@@ -32,32 +32,47 @@
 
 							<!-- Content -->
 								<section>
-									<header class="main">
-										<h1>Log In</h1>
-									</header>
-
-									<form method="post" action="#">
-									  <div class="row gtr-uniform">
-									    <div class="col-6 col-12-xsmall">
-									      <input type="text" name="demo-username" id="demo-username" value="" placeholder="Email or Username" />
-									    </div>
-									    <div class="col-6 col-12-xsmall">
-									      <input type="password" name="password" id="demo-password" value="" placeholder="Password" />
-									    </div>
-									    <!-- Break -->
-									    <div class="col-12">
-									      <ul class="actions">
-										<li><input type="submit" value="Log In" class="primary" /></li>
-										<li><input type="reset" value="Reset" /></li>
-									      </ul>
-									    </div>
-									  </div>
-									</form>
+									<h1>Products</h1>
 								</section>
-								<!-- maybe keep this -->
-								<span class="image object" style="align:center">
-								  <img src="images/eggs_1.jpg" alt="" style="width:70%;"/>
-								</span>
+								<section id="banner">
+									<div class="content">
+										<header>
+											<h2>Monthly Feed Shipment</h2>
+										</header>
+										<p>Every month, we will deliver chicken feed right to your door. You will never need to leave the confort of your own home to go buy feed. Purchase monthly or just whenever your feed storage gets low.</p>
+										<p><b>$35 or xxxBTC</b></p>
+										
+										<form action="https://bitpay.com/checkout" method="post">
+										 	<input type="hidden" name="action" value="checkout" />
+										 	<input type="hidden" name="posData" value="" />
+										 	<input type="hidden" name="data" value="U/xlGWilKTn/K0HHQ+UwAEJ3f3p8VWQhgnE1MhesaA48x+QSdwxws9qvfKYfcz09SbpmFPj8G3LslXk0yO2YINVLrCaGNT77UC40/+wVOHOwtjDF+d9L5sJOjg6GoHvVJibhx6OWTKjXtgcR+Au5384n3gDQYJjTppRB6cr5zUjxb8dTGFFWNKl6Dg+fLAKU" />
+											<input type="image" src="https://bitpay.com/cdn/en_US/bp-btn-pay-currencies.svg" name="submit" style="width: 210px" alt="BitPay, the easy way to pay with bitcoins.">
+										</form>
+									</div>
+									<span class="image object">
+										<img src="images/chicken_feed_2.jpg" alt="" style="height:50%;width=50%;"/>
+									</span>
+								</section>
+								<section id="banner">
+									<div class="content">
+										<header>
+											<h2>Chicken Coop</h2>
+										</header>
+										<p>We will deliver the materials and instructions straight to you. All you need is a hammer, screwdriver, and a few hours to set it up.</p>
+										<p><b>$250 or xxxBTC</b></p>
+										
+										<form action="https://bitpay.com/checkout" method="post">
+											<input type="hidden" name="action" value="checkout" />
+											<input type="hidden" name="posData" value="" />
+											<input type="hidden" name="data" value="U/xlGWilKTn/K0HHQ+UwAEJ3f3p8VWQhgnE1MhesaA5LbPXOh5uHCjYunN6pk6sQ16m6XtK21FCTyMF3NIAMj8ZrKhBu2XZeURDltZVZj4AVb77TSqgIvy/FQb849MFEjT6NFxKXPc2dqHRz5nu3PtZuL5A8IwDbMZ7oDLGymKXWnUJhgmnkcUTJUESUhWCe" />
+											<input type="image" src="https://bitpay.com/cdn/en_US/bp-btn-pay-currencies.svg" name="submit" style="width: 210px" alt="BitPay, the easy way to pay with bitcoins.">
+										</form>
+									</div>
+									<span class="image object">
+										<img src="images/chicken_coop_2.jpg" alt="" style="height:50%;width=50%;"/>
+									</span>
+								</section>
+								
 						</div>
 					</div>
 
@@ -81,7 +96,6 @@
 						<li><a href="index.php">Homepage</a></li>
 						<li><a href="login.php">Log In</a></li>
 						<li><a href="sign_up.php">Sign Up</a></li>
-						<li><a href="products.php">Products</a></li>
 						<li><a href="about_us.php">About Us</a></li>
 						<li><a href="contact_us.php">Contact Us</a></li>	
 					      </ul>

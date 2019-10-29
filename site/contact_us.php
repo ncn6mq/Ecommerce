@@ -195,6 +195,7 @@ EOT;
 						<li><a href="index.php">Homepage</a></li>
 						<li><a href="login.php">Log In</a></li>
 						<li><a href="sign_up.php">Sign Up</a></li>
+                        <li><a href="products.php">Products</a></li>
 						<li><a href="about_us.php">About Us</a></li>
 						<li><a href="contact_us.php">Contact Us</a></li>	
 					      </ul>
