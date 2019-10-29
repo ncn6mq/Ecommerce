@@ -103,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             '$email')";
             $result = pg_query($db, $query);
             $account_created = True;
-} }
+} 
     ?>
     
     
