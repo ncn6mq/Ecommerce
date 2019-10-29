@@ -118,7 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Tell PHPMailer to use SMTP - requires a local mail server;
     //Faster and safer than using mail();
     $mail->isSMTP();
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+    $mail->SMTPDebug = false;
     $mail->Host = 'smtp.gmail.com';
     $mail->Port = 587;
 
@@ -133,13 +133,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Use a fixed address in your own domain as the from address
     //**DO NOT** use the submitter's address here as it will be forgery
     //and will cause your messages to fail SPF checks
-    $mail->setFrom('simple.eggs.biz@gmail.com', 'Simple Eggs');
     //Send the message to yourself, or whoever should receive contact for submissions
     $mail->addAddress('simple.eggs.biz@gmail.com', 'Simple Eggs');
     //Put the submitter's address in a reply-to header
     //This will fail if the address provided is invalid,
     //in which case we should ignore the whole request
 $mail->addReplyTo($email, $first);
+$mail->setFrom('simple.eggs.biz@gmail.com', 'Simple Eggs');
 $mail->Subject = 'Thank you for signing up for SimplEggs!';
 $mail->Body = 'Thanks for signing up for SimplEggs! We look forward to collaborating with you to increase the presence of locally produced eggs!';
 $mail->send();

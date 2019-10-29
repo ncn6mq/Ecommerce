@@ -24,7 +24,7 @@ if (array_key_exists('user-message', $_POST)) {
     //Tell PHPMailer to use SMTP - requires a local mail server;
     //Faster and safer than using mail();
     $mail->isSMTP();
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+    $mail->SMTPDebug = false;
     $mail->Host = 'smtp.gmail.com';
     $mail->Port = 587;
 
