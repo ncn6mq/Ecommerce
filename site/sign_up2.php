@@ -14,64 +14,12 @@ $someErr = False;
 
 //See if request method is post
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-<<<<<<< HEAD
     //open connection to database
     $db = pg_connect("host=ec2-54-163-255-1.compute-1.amazonaws.com port=5432 dbname=d78258r6re094d user=jseqocrbelozuq password=ac7f8466905190ad89da55ed63559f6b09331b96164ac16cfcd27ea02af30536");
     if (!$db) {
         echo "<script type='text/javascript'>alert('an error occured connecting');</script>";
         exit;
     }
-=======
-  if (empty($_POST["first"])) {
-    $nameErr = "First name is required";
-    $someErr = True;
-  } else {
-    $first = ($_POST["first"]);
-  }
-
-  if (empty($_POST["email"])) {
-    $emailErr = "Email cannot be blank";
-    $someErr = True;
-  } else {
-    $email = ($_POST["email"]);
-  }
-
-  if (empty($_POST["last"])) {
-    $lastErr = "Last name is required";
-    $someErr = True;
-  } else {
-    $last = ($_POST["last"]);
-  }
-
-  if (empty($_POST["password"]) Or empty($_POST["password-confirm"]) Or ($_POST['password'] != $_POST['password-confirm'])) {
-    $passwordErr = "One password was empty or they did not match";
-    $someErr = True;
-  } else {
-    $password = ($_POST["password"]);
-    $hashedPass = password_hash($password, PASSWORD_DEFAULT);
-  }
-  
-  if (empty($_POST["address"])) {
-    $addressErr = "Address is required";
-    $someErr = True;
-  } else {
-    $address = ($_POST["address"]);
-  }
-  
- if (empty($_POST["city"])) {
-    $cityErr = "City is required";
-    $someErr = True;
-  } else {
-    $city = ($_POST["city"]);
-  }
-  
- if (empty($_POST["state-category"])) {
-    $stateErr = "State must be selected";
-    $someErr = True;
-  } else {
-    $state  = ($_POST["state-category"]);
-  }
->>>>>>> origin/master
 
     if (empty($_POST["first"])) {
         $nameErr = "First name is required";
@@ -189,7 +137,6 @@ $mail = new PHPMailer(true);
 
 
 <html>
-<<<<<<< HEAD
 <head>
     <title>SimplEggs - Sign Up</title>
     <meta charset="utf-8" />
@@ -402,7 +349,6 @@ $mail = new PHPMailer(true);
         ?>
         
     </body>
-=======
 	<head>
 		<title>SimplEggs - Sign Up</title>
 		<meta charset="utf-8" />
@@ -655,7 +601,6 @@ $mail = new PHPMailer(true);
 			?>
 			
 	</body>
->>>>>>> origin/master
 </html>
     
 <?php

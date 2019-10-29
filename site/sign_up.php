@@ -17,21 +17,21 @@ $account_created = False;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //open connection to database
     $db = pg_connect("host=ec2-54-163-255-1.compute-1.amazonaws.com port=5432 dbname=d78258r6re094d user=jseqocrbelozuq password=ac7f8466905190ad89da55ed63559f6b09331b96164ac16cfcd27ea02af30536");
-
+    
     if (empty($_POST["first"])) {
         $firstErr = "First name is required";
         $someErr = True;
     } else {
         $first = ($_POST["first"]);
     }
-
+    
     //check if email is already in database
     //$email_query = "SELECT * FROM user_database WHERE email = '$_POST[email]'";
     //$email_result = pg_query($db, $email_query);
     $email_result = pg_query_params($db, 'SELECT * FROM user_database WHERE email = $1', array($_POST[email]));
     $rows = pg_num_rows($email_result);
-
-
+    
+    
     if (empty($_POST["email"])) {
         $emailErr = "Email is required";
         $someErr = True;
@@ -41,14 +41,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $email = ($_POST["email"]);
     }
-
+    
     if (empty($_POST["last"])) {
         $lastErr = "Last name is required";
         $someErr = True;
     } else {
         $last = ($_POST["last"]);
     }
-
+    
     if (empty($_POST["password"])){
         $passwordErr = "Password is required";
         $someErr = True;
@@ -59,28 +59,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = ($_POST["password"]);
         $hashedPass = password_hash($password, PASSWORD_DEFAULT);
     }
-
+    
     if (empty($_POST["address"])) {
         $addressErr = "Address is required";
         $someErr = True;
     } else {
         $address = ($_POST["address"]);
     }
-
+    
     if (empty($_POST["city"])) {
         $cityErr = "Please type your city";
         $someErr = True;
     } else {
         $city = ($_POST["city"]);
     }
-
+    
     if (empty($_POST["state-category"])) {
         $stateErr = "State must be selected";
         $someErr = True;
     } else {
         $state  = ($_POST["state-category"]);
     }
-
+    
     if(empty($_POST["zip"]) Or !preg_match('#[0-9]{5}#', $_POST["zip"])) {
         $zipErr = "Incorrect zip code format";
         $someErr = True;
@@ -88,10 +88,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else {
         $zip = $_POST["zip"];
     }
-
-
+    
+    
     if(!$someErr) {
-    //insert new user into database if no errors
+        //insert new user into database if no errors
         $query = "INSERT INTO user_database VALUES (
             '$first',
             '$last',
@@ -103,35 +103,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             '$email')";
         $result = pg_query($db, $query);
         $account_created = True;
-     date_default_timezone_set('Etc/UTC');
-    // Send confirmation email
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\SMTP;
-    use PHPMailer\PHPMailer\Exception;
-
-    require 'vendor/autoload.php';
-    $mail = new PHPMailer(true);
-
-
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
-    $mail->isSMTP();                                            // Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = 'simple.eggs.biz@gmail.com';                     // SMTP username
-    $mail->Password   = 'CS4753Ecommerce';                               // SMTP password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-    $mail->Port       = 587;                                    // TCP port to connect to
-
-    //Recipients
-    $mail->setFrom('simple.eggs.biz@gmail.com', 'Simple Eggs');
-    $mail->addAddress($_POST[email], $_POST[first]);     // Add a recipient
-    $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Thank You for signing up!';
-    $mail->Body    = 'Thanks for signing up for <b>SimplEggs!</b> We will get your eggs to you in no time';
-    $mail->AltBody = 'Thanks for signing up for simpleggs!';
-
-    $mail->send();
-
+        date_default_timezone_set('Etc/UTC');
+        
+        
+        // Send confirmation email
+        use PHPMailer\PHPMailer\PHPMailer;
+        use PHPMailer\PHPMailer\SMTP;
+        use PHPMailer\PHPMailer\Exception;
+        
+        require 'vendor/autoload.php';
+        $mail = new PHPMailer(true);
+        
+        
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+        $mail->isSMTP();                                            // Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+        $mail->Username   = 'simple.eggs.biz@gmail.com';                     // SMTP username
+        $mail->Password   = 'CS4753Ecommerce';                               // SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+        $mail->Port       = 587;                                    // TCP port to connect to
+        
+        //Recipients
+        $mail->setFrom('simple.eggs.biz@gmail.com', 'Simple Eggs');
+        $mail->addAddress($_POST[email], $_POST[first]);     // Add a recipient
+        $mail->isHTML(true);                                  // Set email format to HTML
+        $mail->Subject = 'Thank You for signing up!';
+        $mail->Body    = 'Thanks for signing up for <b>SimplEggs!</b> We will get your eggs to you in no time';
+        $mail->AltBody = 'Thanks for signing up for simpleggs!';
+        
+        $mail->send();
+        
     }
 }
 
