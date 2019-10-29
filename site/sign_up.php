@@ -15,9 +15,10 @@ $account_created = False;
 
 require '../vendor/autoload.php';
 //Create a new PHPMailer instance;
-$mail = new PHPMailer;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
+$mail = new PHPMailer;
+
 
 //See if request method is post
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -109,10 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             '$email')";
             $result = pg_query($db, $query);
             $account_created = True;
-} 
-?>
-
-<?php
+} }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
  if($account_created) {
     date_default_timezone_set('Etc/UTC');
