@@ -42,7 +42,7 @@
 										<p>Every month, we will deliver chicken feed right to your door. You will never need to leave the confort of your own home to go buy feed. Purchase monthly or just whenever your feed storage gets low.</p>
 										<p><b>$35 or xxxBTC</b></p>
 										
-										<form action="https://bitpay.com/checkout" method="post">
+										<form action="https://test.bitpay.com/checkout" method="post">
 										 	<input type="hidden" name="action" value="checkout" />
 										 	<input type="hidden" name="posData" value="" />
 										 	<input type="hidden" name="data" value="U/xlGWilKTn/K0HHQ+UwAEJ3f3p8VWQhgnE1MhesaA48x+QSdwxws9qvfKYfcz09SbpmFPj8G3LslXk0yO2YINVLrCaGNT77UC40/+wVOHOwtjDF+d9L5sJOjg6GoHvVJibhx6OWTKjXtgcR+Au5384n3gDQYJjTppRB6cr5zUjxb8dTGFFWNKl6Dg+fLAKU" />
@@ -61,7 +61,7 @@
 										<p>We will deliver the materials and instructions straight to you. All you need is a hammer, screwdriver, and a few hours to set it up.</p>
 										<p><b>$250 or xxxBTC</b></p>
 										
-										<form action="https://bitpay.com/checkout" method="post">
+										<form action="https://test.bitpay.com/checkout" method="post">
 											<input type="hidden" name="action" value="checkout" />
 											<input type="hidden" name="posData" value="" />
 											<input type="hidden" name="data" value="U/xlGWilKTn/K0HHQ+UwAEJ3f3p8VWQhgnE1MhesaA5LbPXOh5uHCjYunN6pk6sQ16m6XtK21FCTyMF3NIAMj8ZrKhBu2XZeURDltZVZj4AVb77TSqgIvy/FQb849MFEjT6NFxKXPc2dqHRz5nu3PtZuL5A8IwDbMZ7oDLGymKXWnUJhgmnkcUTJUESUhWCe" />
@@ -96,6 +96,7 @@
 						<li><a href="index.php">Homepage</a></li>
 						<li><a href="login.php">Log In</a></li>
 						<li><a href="sign_up.php">Sign Up</a></li>
+						<li><a href="products.php">Products</a></li>
 						<li><a href="about_us.php">About Us</a></li>
 						<li><a href="contact_us.php">Contact Us</a></li>	
 					      </ul>
