@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $state  = ($_POST["state-category"]);
     }
     
-    if(empty($_POST["zip"]) Or !preg_match('#[0-9]{5}#', $_POST["zip"])) {
+    if(empty($_POST["zip"]) Or !preg_match('/^[0-9]{5}$/', $_POST["zip"])) {
         $zipErr = "Incorrect zip code format";
         $someErr = True;
     }
