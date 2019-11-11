@@ -8,7 +8,7 @@
 <?php
 session_start();
 if(!isset($_SESSION["user_email"])){ //if login in session is not set redirect to login page
-    //header("Location: https://simple-eggs.herokuapp.com/site/login.php");
+    header("Location: https://simple-eggs.herokuapp.com/site/login.php");
 }
 
 
@@ -71,7 +71,7 @@ $final_cost_subscription = substr($str_cost2, 0, 5);
 
 							<!-- Content -->
                                 <section>
-                                    <h3>Wecome <?php echo $_SESSION["user_email"] ?>! <?php echo "testing " . session_id(); ?></h3>
+                                    <h3>Wecome <?php echo $_SESSION["user_email"] ?>!?></h3>
                                 </section>
 								<section>
 									<h1>Products</h1>
