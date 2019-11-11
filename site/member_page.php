@@ -70,13 +70,15 @@ $final_cost_subscription = substr($str_cost2, 0, 5);
 								</header>
 
 							<!-- Content -->
-                            <div align="right">
-                                <form action="logout.php">
-                                    <input type="submit" value="Log Out" />
-                                </form>
-                            </div>
+                            
+
                                 
                                 <section>
+                                    <div align="right">
+                                        <form action="logout.php">
+                                            <input type="submit" value="Log Out" />
+                                        </form>
+                                    </div>
                                     <h3>Wecome <?php echo $_SESSION["user_email"] ?></h3>
                                 </section>
 
