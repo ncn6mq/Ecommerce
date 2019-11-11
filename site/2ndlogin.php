@@ -3,7 +3,32 @@
 	Editorial by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+  -->
+
+<?php
+
+$emailErr = $passwordErr = "";
+$email = $password = $hashedPass = "";
+$someErr = False;
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //open connection to database
+    $db = pg_connect("host=ec2-54-163-255-1.compute-1.amazonaws.com port=5432 dbname=d78258r6re094d user=jseqocrbelozuq password=ac7f8466905190ad89da55ed63559f6b09331b96164ac16cfcd27ea02af30536");
+
+    //check if email is already in database
+    //$email_query = "SELECT * FROM user_database WHERE email = '$_POST[email]'";
+    //$email_result = pg_query($db, $email_query);
+    $email_result = pg_query_params($db, 'SELECT * FROM user_database WHERE email = $1', array($_POST[email]));
+    $rows = pg_num_rows($email_result);
+    if ($rows > 0) {
+$someErr = True;
+}
+}
+
+?>
+
+
 <html>
 	<head>
 		<title>SimplEggs - Log In</title>
@@ -34,10 +59,10 @@
 									<form method="post" action="#">
 									  <div class="row gtr-uniform">
 									    <div class="col-6 col-12-xsmall">
-									      <input type="text" name="demo-username" id="demo-username" value="" placeholder="Email or Username" />
+									      <input type="text" name="email" id="email" value="" placeholder="Email" />
 									    </div>
 									    <div class="col-6 col-12-xsmall">
-									      <input type="password" name="password" id="demo-password" value="" placeholder="Password" />
+									      <input type="password" name="password" id="password" value="" placeholder="Password" />
 									    </div>
 									    <!-- Break -->
 									    <div class="col-12">
