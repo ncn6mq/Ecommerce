@@ -40,7 +40,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // assert that the two passwords are the same
         if (password_verify($passwordGiven, $hashedPass)) {
             //Start cookie here***
-            header("Location: https://simple-eggs.herokuapp.com/site/member_homepage.php");
+            
+            session_start();
+            $_SESSION['user_email'] = $email; //keep track of user email for database requests
+            
+            header("Location: https://simple-eggs.herokuapp.com/site/member_page.php");
             exit();
         }
         else {
@@ -83,7 +87,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 								<section>
 									<header class="main">
 										<h1>Log In</h1>
+                                        <?php //check to see if already logged in -> add link to member page
+                                        if (isset($_SESSION['user-email'])) {
+                                            echo "<p style='font-size:70%;'>You are already logged in as $_SESSION['user-email']. To access the member page please use <a href=member_page.php>this link</a></p>";
+                                        }
+                                        ?>
 									</header>
+                                    
 
 									<form method="post" action="login.php">
 									  <div class="row gtr-uniform">
