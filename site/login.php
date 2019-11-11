@@ -15,12 +15,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $someErr = True;
     }
     else {
+        $email = ($_POST["email"]);
         $db = pg_connect("host=ec2-54-163-255-1.compute-1.amazonaws.com port=5432 dbname=d78258r6re094d user=jseqocrbelozuq password=ac7f8466905190ad89da55ed63559f6b09331b96164ac16cfcd27ea02af30536");
         $password_query = 'SELECT password FROM user_database WHERE email = $1';
-        $email_result = pg_query_params($db, 'SELECT password FROM user_database WHERE email = $1', array($_POST[email]));
+        $email_result = pg_query_params($db, 'SELECT password FROM user_database WHERE email = $1', array($_POST["email"]));
         $rows = pg_num_rows($email_result);
         if ($rows > 0) {
-            $row2 = pg_fetch_row($email_2);
+            $row2 = pg_fetch_row($email_result);
             $hashedPass = $row2[0];
             $email = ($_POST["email"]);
         }
@@ -44,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         else {
             $someErr = True;
-            $passwordErr = "Incorrect Password given";
+            $passwordErr = "Incorrect password given";
         }
     }
 }
