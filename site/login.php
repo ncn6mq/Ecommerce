@@ -38,13 +38,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $hashedPass = password_hash($password, PASSWORD_DEFAULT);
     }
     if (!$someErr) {
-        $query_result = pg_query_params($db, 'SELECT * FROM user_database WHERE email = $1 AND password=$2', array($email, $hashedPass));
+        $query_result = pg_query_params($db, 'SELECT * FROM user_database WHERE email = $1 AND password = $2', array($email, $hashedPass));
 	$rows2 = pg_num_rows($query_result);
 	if ($rows2 == 0) {
 	$someErr = True;
+	$passwordErr = "Incorrect email or password";
 	}
 	else {
 	// START THE SESSION 
+	//FIGURE OUT COOKIES HERE
 	$someErr = False;
 	}
 	}
@@ -98,19 +100,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									  <div class="row gtr-uniform">
 									    <div class="col-6 col-12-xsmall">
 									      <input type="text" name="email" id="email" value="" placeholder="Email" />
-									       <!--<?php if ($someErr) {
+									       <?php if ($someErr) {
 										echo "
 										<p style='font-size:70%;color:red;'>$emailErr</p>";
 														    }
-														    ?>-->
+														    ?>
 									    </div>
 									    <div class="col-6 col-12-xsmall">
 									      <input type="password" name="password" id="password" value="" placeholder="Password" />
-									      <!--<?php if ($someErr) {
+									      <?php if ($someErr) {
 									       echo "
 									       <p style='font-size:70%;color:red;'>$passwordErr</p>";
 }
-?>-->
+?>
 									    </div>
 									    <!-- Break -->
 									    <div class="col-12">
