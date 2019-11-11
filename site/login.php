@@ -46,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	// START THE SESSION 
 	$someErr = False;
 	}
+	}
 
     if (!$someErr){
     //You need to redirect
@@ -55,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else{
     // do some
     }
-
+}
 ?>
 
 
