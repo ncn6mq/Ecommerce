@@ -40,6 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // assert that the two passwords are the same
         if (password_verify($passwordGiven, $hashedPass)) {
             //Start cookie here***
+            session_start();
             header("Location: https://simple-eggs.herokuapp.com/site/member_page.php");
             exit();
         }
