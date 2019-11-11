@@ -4,6 +4,8 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
   -->
+<!-- You will not be able to see this text.
+
 <?php
 $emailErr = $passwordErr = "";
 $someErr = False;
@@ -59,7 +61,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-
+-->
+<?php
+$emailErr = $passwordErr = "";
+$someErr = False;
+$email = $password = $hashedPass = "";
+?>
 
 
 <html>
