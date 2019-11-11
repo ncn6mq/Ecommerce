@@ -24,6 +24,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($rows > 0) {
 $someErr = True;
 }
+if (empty($_POST["email"])) {
+        $emailErr = "Email is required";
+        $someErr = True;
+    } elseif ($rows == 0) {
+        $emailErr = "That email is not in use";
+        $someErr = True;
+    } else {
+        $email = ($_POST["email"]);
+    }
+    if (empty($_POST["password"])) {
+        $passwordErr = "Password is required";
+        $someErr = True;
+    } else {
+        $password = $_POST["password"]);
+        $hashedPass = password_hash($password, PASSWORD_DEFAULT);
+    }
+    if (!$someErr) {
+        $query_result = pg_query_params($db, 'SELECT * FROM user_database WHERE email = $1 AND password=$2', array($email, $hashedPass));
+	$rows2 = pg_num_rows($query_result);
+	if ($rows2 == 0) {
+	$someErr = True;
+	}
+	else {
+	// START THE SESSION 
+	$someErr = False;
+	}
+	}
+}
+if ($someErr) {
+echo 'This worked';
 }
 
 ?>
