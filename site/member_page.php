@@ -11,6 +11,27 @@ if(!isset($_SESSION["user_email"])){ //if login in session is not set redirect t
     header("Location: https://simple-eggs.herokuapp.com/site/login.php");
 }
 
+$codeErr = "";
+$someErr = False;
+$code =  "";
+$valid_code = false;
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["code"])) {
+        $codeErr = "Code is required";
+        $someErr = True;
+    }
+    else {
+        $code = ($_POST["code"]);
+        if($code == "coupes"){
+            $valid_code = true;
+        }
+        else{
+            $codeErr = $code . " is not a valid discount code";
+            $someErr = True;
+        }
+    }
+}
+
 
 $curl = curl_init();
 
@@ -87,6 +108,21 @@ $final_cost_subscription = substr($str_cost2, 0, 5);
 								<section>
 									<h1>Products</h1>
 								</section>
+                                <form method="post" action="member_page.php">
+                                  <div class="row gtr-uniform">
+                                    <div class="col-6 col-12-xsmall">
+                                      <input type="text" name="code" id="code" value="" placeholder="discount code" />
+                                        <?php
+                                        if ($someErr) {
+                                            echo "<p style='font-size:70%;color:red;'>$codeErr</p>";
+                                        }
+                                        ?>
+                                    </div>
+                                    <div class="col-6 col-12-xsmall">
+                                      <input type="submit" value="Apply Code" class="primary" /><
+                                    </div>
+                                  </div>
+                                </form>
 								<section id="banner">
 									<div class="content">
 										<header>
