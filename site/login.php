@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 							<!-- Content -->
 								<section>
 									<header class="main">
-										<h1>Log In</h1>
+										<h1>Log In <?php echo "testing " . session_id(); ?></h1>
 									</header>
 
 									<form method="post" action="login.php">
