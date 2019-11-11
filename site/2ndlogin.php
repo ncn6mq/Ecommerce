@@ -40,21 +40,8 @@ if (empty($_POST["email"])) {
         $password = $_POST["password"]);
         $hashedPass = password_hash($password, PASSWORD_DEFAULT);
     }
-    if (!$someErr) {
-        $query_result = pg_query_params($db, 'SELECT * FROM user_database WHERE email = $1 AND password=$2', array($email, $hashedPass));
-	$rows2 = pg_num_rows($query_result);
-	if ($rows2 == 0) {
-	$someErr = True;
-	}
-	else {
-	// START THE SESSION 
-	$someErr = False;
-	}
-	}
 }
-if ($someErr) {
-echo 'This worked';
-}
+
 
 ?>
 
