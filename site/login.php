@@ -105,15 +105,19 @@ $email = $password = $hashedPass = "";
 									  <div class="row gtr-uniform">
 									    <div class="col-6 col-12-xsmall">
 									      <input type="text" name="email" id="email" value="" placeholder="Email" />
-									       <?php if ($someErr) {
+									       <!--<?php if ($someErr) {
 										echo "
-										<p style='font-size:70%;color:red;'>$emailErr</p>";}?>
+										<p style='font-size:70%;color:red;'>$emailErr</p>";
+														    }
+														    ?>-->
 									    </div>
 									    <div class="col-6 col-12-xsmall">
 									      <input type="password" name="password" id="password" value="" placeholder="Password" />
-									      <?php if ($someErr) {
+									      <!--<?php if ($someErr) {
 									       echo "
-									       <p style='font-size:70%;color:red;'>$passwordErr</p>";}?>
+									       <p style='font-size:70%;color:red;'>$passwordErr</p>";
+}
+?>-->
 									    </div>
 									    <!-- Break -->
 									    <div class="col-12">
