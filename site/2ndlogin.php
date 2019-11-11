@@ -37,7 +37,7 @@ if (empty($_POST["email"])) {
         $passwordErr = "Password is required";
         $someErr = True;
     } else {
-        $password = $_POST["password"]);
+        $password = $_POST["password"];
         $hashedPass = password_hash($password, PASSWORD_DEFAULT);
     }
 }

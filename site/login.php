@@ -4,7 +4,6 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
   -->
-<!-- You will not be able to see this text.
 
 <?php
 $emailErr = $passwordErr = "";
@@ -35,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $passwordErr = "Password is required";
         $someErr = True;
     } else {
-        $password = $_POST["password"]);
+        $password = $_POST["password"];
         $hashedPass = password_hash($password, PASSWORD_DEFAULT);
     }
     if (!$someErr) {
@@ -61,7 +60,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
--->
 
 
 <html>
