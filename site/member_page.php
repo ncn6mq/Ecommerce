@@ -7,7 +7,7 @@
 
 <?php
 if(!isset($_SESSION['user-email'])){ //if login in session is not set redirect to login page
-    header("Location: https://simple-eggs.herokuapp.com/site/login.php");
+    //header("Location: https://simple-eggs.herokuapp.com/site/login.php");
 }
 
 
