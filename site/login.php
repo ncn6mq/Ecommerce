@@ -41,6 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($passwordGiven, $hashedPass)) {
             //Start cookie here***
             session_start();
+            $_SESSION['user_email'] = $email; //keep track of user email for database requests
             header("Location: https://simple-eggs.herokuapp.com/site/member_page.php");
             exit();
         }
