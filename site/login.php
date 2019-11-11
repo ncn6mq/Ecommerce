@@ -3,7 +3,64 @@
 	Editorial by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+  -->
+<?php
+$emailErr = $passwordErr = "";
+$someErr = False;
+$email = $password = $hashedPass = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //open connection to database
+    $db = pg_connect("host=ec2-54-163-255-1.compute-1.amazonaws.com port=5432 dbname=d78258r6re094d user=jseqocrbelozuq password=ac7f8466905190ad89da55ed63559f6b09331b96164ac16cfcd27ea02af30536");
+
+    //check if email is already in database
+    //$email_query = "SELECT * FROM user_database WHERE email = '$_POST[email]'";
+    //$email_result = pg_query($db, $email_query);
+    $email_result = pg_query_params($db, 'SELECT * FROM user_database WHERE email = $1', array($_POST[email]));
+    $rows = pg_num_rows($email_result);
+    
+    
+    if (empty($_POST["email"])) {
+        $emailErr = "Email is required";
+        $someErr = True;
+    } elseif ($rows == 0) {
+        $emailErr = "That email is not in use";
+        $someErr = True;
+    } else {
+        $email = ($_POST["email"]);
+    }
+    if (empty($_POST["password"])) {
+        $passwordErr = "Password is required";
+        $someErr = True;
+    } else {
+        $password = $_POST["password"]);
+        $hashedPass = password_hash($password, PASSWORD_DEFAULT);
+    }
+    if (!$someErr) {
+        $query_result = pg_query_params($db, 'SELECT * FROM user_database WHERE email = $1 AND password=$2', array($email, $hashedPass));
+	$rows2 = pg_num_rows($query_result);
+	if ($rows2 == 0) {
+	$someErr = True;
+	}
+	else {
+	// START THE SESSION 
+	$someErr = False;
+	}
+
+    if (!$someErr){
+    //You need to redirect
+    header("Location: https://simple-eggs.herokuapp.com/site/member_homepage.php");
+    exit();
+    }
+    else{
+    // do some
+    }
+
+?>
+
+
+
+
 <html>
 	<head>
 		<title>SimplEggs - Log In</title>
@@ -36,13 +93,19 @@
 										<h1>Log In</h1>
 									</header>
 
-									<form method="post" action="#">
+									<form method="post" action="login.php">
 									  <div class="row gtr-uniform">
 									    <div class="col-6 col-12-xsmall">
-									      <input type="text" name="demo-username" id="demo-username" value="" placeholder="Email or Username" />
+									      <input type="text" name="email" id="email" value="" placeholder="Email" />
+									       <?php if ($someErr) {
+										echo "
+										<p style='font-size:70%;color:red;'>$emailErr</p>";}?>
 									    </div>
 									    <div class="col-6 col-12-xsmall">
-									      <input type="password" name="password" id="demo-password" value="" placeholder="Password" />
+									      <input type="password" name="password" id="password" value="" placeholder="Password" />
+									      <?php if ($someErr) {
+									       echo "
+									       <p style='font-size:70%;color:red;'>$passwordErr</p>";}?>
 									    </div>
 									    <!-- Break -->
 									    <div class="col-12">
