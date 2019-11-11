@@ -71,7 +71,7 @@ $final_cost_subscription = substr($str_cost2, 0, 5);
 
 							<!-- Content -->
                                 <section>
-                                    <h3>Wecome <?php echo $_SESSION["user_email"] ?>!?></h3>
+                                    <h3>Wecome <?php echo $_SESSION["user_email"] ?></h3>
                                 </section>
 								<section>
 									<h1>Products</h1>

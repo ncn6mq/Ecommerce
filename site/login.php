@@ -6,6 +6,8 @@
   -->
 
 <?php
+session_start();
+
 $emailErr = $passwordErr = "";
 $someErr = False;
 $email = $password = $hashedPass = $passwordGiven = "";
@@ -40,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // assert that the two passwords are the same
         if (password_verify($passwordGiven, $hashedPass)) {
             //Start cookie here***
-            session_start();
             $_SESSION["user_email"] = $email; //keep track of user email for database requests
             header("Location: https://simple-eggs.herokuapp.com/site/member_page.php");
             exit();
