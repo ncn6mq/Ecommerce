@@ -8,59 +8,44 @@
 <?php
 $emailErr = $passwordErr = "";
 $someErr = False;
-$email = $password = $hashedPass = "";
-
+$email = $password = $hashedPass = $passwordGiven = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //open connection to database
-    $db = pg_connect("host=ec2-54-163-255-1.compute-1.amazonaws.com port=5432 dbname=d78258r6re094d user=jseqocrbelozuq password=ac7f8466905190ad89da55ed63559f6b09331b96164ac16cfcd27ea02af30536");
-
-    //check if email is already in database
-    //$email_query = "SELECT * FROM user_database WHERE email = '$_POST[email]'";
-    //$email_result = pg_query($db, $email_query);
-    $email_result = pg_query_params($db, 'SELECT * FROM user_database WHERE email = $1', array($_POST[email]));
-    $rows = pg_num_rows($email_result);
-    
-    
     if (empty($_POST["email"])) {
         $emailErr = "Email is required";
         $someErr = True;
-    } elseif ($rows == 0) {
-        $emailErr = "That email is not in use";
-        $someErr = True;
-    } else {
-        $email = ($_POST["email"]);
     }
-    if (empty($_POST["password"])) {
-        $passwordErr = "Password is required";
-        $someErr = True;
-    } else {
-        $password = $_POST["password"];
-        $hashedPass = password_hash($password, PASSWORD_DEFAULT);
+    else {
+        $db = pg_connect("host=ec2-54-163-255-1.compute-1.amazonaws.com port=5432 dbname=d78258r6re094d user=jseqocrbelozuq password=ac7f8466905190ad89da55ed63559f6b09331b96164ac16cfcd27ea02af30536");
+        $password_query = 'SELECT password FROM user_database WHERE email = $1';
+        $email_result = pg_query_params($db, 'SELECT password FROM user_database WHERE email = $1', array($_POST[email]));
+        $rows = pg_num_rows($email_result);
+        if ($rows > 0) {
+            $row2 = pg_fetch_row($email_2);
+            $hashedPass = $row2[0];
+            $email = ($_POST["email"]);
+        }
+        else {
+            $emailErr = "That email is not in use";
+            $someErr = True;
+        }
+        if (empty($_POST["password"])) {
+            $passwordErr = "Password is required";
+            $someErr = True;
+        } else {
+            $passwordGiven = $_POST["password"];
+        }
     }
     if (!$someErr) {
-        $next_query = "SELECT * FROM user_database WHERE email = $1 AND password = $2";
-	$the_array = array(trim($email), trim($hashedPass));
-	//$unused_query = pg_query_params($db, 'SELECT * FROM user_database WHERE email = $1 AND password = $2', array($email, $hashedPass));
-	$query_result = pg_query_params($db, $next_query, $the_array);
-	$rows2 = pg_num_rows($query_result);
-	if ($rows2 == 0) {
-	$someErr = True;
-	$passwordErr = "Incorrect email or password";
-	}
-	else {
-	// START THE SESSION 
-	//FIGURE OUT COOKIES HERE
-	$someErr = False;
-	}
-	}
-
-    if (!$someErr){
-    //You need to redirect
-    header("Location: https://simple-eggs.herokuapp.com/site/member_homepage.php");
-    exit();
-    }
-    else{
-    // do some
+        // assert that the two passwords are the same
+        if (password_verify($passwordGiven, $hashedPass)) {
+            //Start cookie here***
+            header("Location: https://simple-eggs.herokuapp.com/site/member_homepage.php");
+            exit();
+        }
+        else {
+            $someErr = True;
+            $passwordErr = "Incorrect Password given";
+        }
     }
 }
 ?>
@@ -114,8 +99,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									      <?php if ($someErr) {
 									       echo "
 									       <p style='font-size:70%;color:red;'>$passwordErr</p>";
-}
-?>
+									       }
+									       ?>
 									    </div>
 									    <!-- Break -->
 									    <div class="col-12">
