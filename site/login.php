@@ -62,11 +62,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 -->
-<?php
-$emailErr = $passwordErr = "";
-$someErr = False;
-$email = $password = $hashedPass = "";
-?>
 
 
 <html>
