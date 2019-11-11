@@ -38,7 +38,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $hashedPass = password_hash($password, PASSWORD_DEFAULT);
     }
     if (!$someErr) {
-        $query_result = pg_query_params($db, 'SELECT * FROM user_database WHERE email = $1 AND password = $2', array($email, $hashedPass));
+    $next_query = "SELECT * FROM user_database WHERE email = $1 AND password = $2";
+    $the_array = (trim($email), trim($hashedPass));
+        $unused_query = pg_query_params($db, 'SELECT * FROM user_database WHERE email = $1 AND password = $2', array($email, $hashedPass));
+	$query_result = pg_query_params($db, $next_query, $the_array);
 	$rows2 = pg_num_rows($query_result);
 	if ($rows2 == 0) {
 	$someErr = True;
