@@ -77,7 +77,7 @@ $final_cost2 = substr($str_cost_2, 0, 7);
 
 							<!-- Header -->
 								<header id="header">
-								  <a href="index.html" class="logo"><img src="images/SimplEggs_Logo.png" alt="SimplEggs" style="height:35px;width:auto;"> by Kieran Heese, Nick Newton, and Zane Alpher</a>
+								  <a href="index.php" class="logo"><img src="images/SimplEggs_Logo.png" alt="SimplEggs" style="height:35px;width:auto;"> by Kieran Heese, Nick Newton, and Zane Alpher</a>
 									<ul class="icons">
 										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -94,8 +94,8 @@ $final_cost2 = substr($str_cost_2, 0, 7);
 										</header>
 										<p>SimplEggs delivers coops, feed, and general support to aid you, the backyard farmer. Whether you are new to raising livestock or an old hand, we make your experience astonishingly easy and rewarding.  </p>
 										<ul class="actions">
-											<li><a href="sign_up.html" class="button big">Sign Up</a></li>
-											<li><a href="login.html" class="button big">Log In</a></li>
+											<li><a href="sign_up.php" class="button big">Sign Up</a></li>
+											<li><a href="login.php" class="button big">Log In</a></li>
 										</ul>
 									</div>
 									<span class="image object">
