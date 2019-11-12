@@ -55,9 +55,16 @@ $response = json_decode($response, true);
 $money_rate =  $response['data']['rates']['USD'];
 $money_string = str_replace( ',', '', $money_rate );
 $money_int = (int) $money_string;
+
 $cost_per_order = (250)/$money_int;
 $str_cost = (string) $cost_per_order;
 $final_cost_one_time = substr($str_cost, 0, 5);
+
+$cost_per_order_discount = (200)/$money_int;
+$str_cost_discount = (string) $cost_per_order_discount;
+$final_cost_one_time_discount = substr($str_cost_discount, 0, 5);
+
+
 $cost_per_order2 = (35)/$money_int;
 $str_cost2 = (string) $cost_per_order2;
 $final_cost_subscription = substr($str_cost2, 0, 5);
@@ -106,8 +113,7 @@ $final_cost_subscription = substr($str_cost2, 0, 5);
                                 </section>
 
 								<section>
-									<h1>Products</h1>
-								</section>
+								<h1>Products</h1>
                                 <form method="post" action="member_page.php">
                                   <div class="row gtr-uniform">
                                     <div class="col-6 col-12-xsmall">
@@ -119,17 +125,20 @@ $final_cost_subscription = substr($str_cost2, 0, 5);
                                         ?>
                                     </div>
                                     <div class="col-6 col-12-xsmall">
-                                      <input type="submit" value="Apply Code" class="primary" /><
+                                      <input type="submit" value="Apply Code" class="primary" />
                                     </div>
                                   </div>
                                 </form>
+                                </section>
 								<section id="banner">
 									<div class="content">
 										<header>
 											<h2>Monthly Feed Shipment</h2>
 										</header>
 										<p>Every month, we will deliver chicken feed right to your door. You will never need to leave the confort of your own home to go buy feed. Purchase monthly or just whenever your feed storage gets low.</p>
-										<p><b>$35 or <?php echo $final_cost_subscription ?> BTC</b></p>
+										
+                                        
+                                        <p><b>$35 or <?php echo $final_cost_subscription ?> BTC</b></p>
 										
 										<form action="https://test.bitpay.com/checkout" method="post">
 											<input type="hidden" name="action" value="checkout" />
@@ -137,6 +146,8 @@ $final_cost_subscription = substr($str_cost2, 0, 5);
 											<input type="hidden" name="data" value="KtqWOh5dTqAVRdlzErq6VzRshYRC8epNDhWv9JRZr+2jI5eEI/Crk0fNFYKk4Zx5lYG1ggNYQ5X6bJIo74V56n6TKWqWZTvNOukAUx8tpKDxGyQUjW5MOuz8kCUgq7JjhsLLgLJGoeQFHGCL1GbZzS9w10Wg5gZzbh4IhD6RYBG/zm6hz42wsTokRH2Oy5wx" />
 											<input type="image" src="https://test.bitpay.com/cdn/en_US/bp-btn-pay-currencies.svg" name="submit" style="width: 210px" alt="BitPay, the easy way to pay with bitcoins.">
 										</form>
+                                        
+                                        
 									</div>
 									<span class="image object">
 										<img src="images/chicken_feed_2.jpg" alt="" style="height:50%;width=50%;"/>
@@ -148,7 +159,7 @@ $final_cost_subscription = substr($str_cost2, 0, 5);
 											<h2>Chicken Coop</h2>
 										</header>
 										<p>We will deliver the materials and instructions straight to you. All you need is a hammer, screwdriver, and a few hours to set it up.</p>
-										<p><b>$250 or <?php echo $final_cost_one_time ?> BTC</b></p>
+										<p><b><?php echo ($valid_code ? '$200' : '$250' ) ?> or <?php echo $final_cost_one_time ?> BTC</b></p>
 										
 										<form action="https://test.bitpay.com/checkout" method="post">
 											<input type="hidden" name="action" value="checkout" />
