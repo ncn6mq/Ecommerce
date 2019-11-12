@@ -69,6 +69,9 @@ $cost_per_order2 = (35)/$money_int;
 $str_cost2 = (string) $cost_per_order2;
 $final_cost_subscription = substr($str_cost2, 0, 5);
 
+
+$bitpay_info_full_price = 'KtqWOh5dTqAVRdlzErq6VzRshYRC8epNDhWv9JRZr+0H0r+K6/Tw42/19xVnmpW68ggrSHTGqlIZOOyEyNEBsOYuPUCzr6NjN7L1ChCF5gV5BEnoMXrv192e7Svqfide9jObuqbHzZYHL6QUQwAGd1+G1FChrECD6nUT2QZdYDUOXUkbmeFzdCxiL5P2I+u9';
+$bitpay_info_discount = 'KtqWOh5dTqAVRdlzErq6VzRshYRC8epNDhWv9JRZr+0H0r+K6/Tw42/19xVnmpW6xIcdoOhxwnl8HY1cWo29CAue2Zk8uGroDE/jvUtHsgnO2///yeYHxU+Ui1n4Zhx/DvU9o58RaIWt8OfKkqe+b6i6yHPdi+FSVUVI+tkzz7SLntfM0mrqCJ1SZ+Ns5iD1';
 ?>
 
 <html>
@@ -164,7 +167,7 @@ $final_cost_subscription = substr($str_cost2, 0, 5);
 										<form action="https://test.bitpay.com/checkout" method="post">
 											<input type="hidden" name="action" value="checkout" />
 											<input type="hidden" name="posData" value="" />
-											<input type="hidden" name="data" value="KtqWOh5dTqAVRdlzErq6VzRshYRC8epNDhWv9JRZr+0H0r+K6/Tw42/19xVnmpW68ggrSHTGqlIZOOyEyNEBsOYuPUCzr6NjN7L1ChCF5gV5BEnoMXrv192e7Svqfide9jObuqbHzZYHL6QUQwAGd1+G1FChrECD6nUT2QZdYDUOXUkbmeFzdCxiL5P2I+u9" />
+											<input type="hidden" name="data" value="<?php echo ($valid_code ? $bitpay_info_discount : $bitpay_info_full_price ) ?>" />
 											<input type="image" src="https://test.bitpay.com/cdn/en_US/bp-btn-pay-currencies.svg" name="submit" style="width: 210px" alt="BitPay, the easy way to pay with bitcoins.">
 										</form>
 									</div>
