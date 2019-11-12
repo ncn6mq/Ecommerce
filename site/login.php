@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 										<h1>Log In</h1>
                                         <?php //check to see if already logged in -> add link to member page
                                         if (isset($_SESSION['user_email'])) {
-                                            echo "<p style='font-size:70%;'>You are already logged in as " . $_SESSION['user_email'] . ". To access the member page please use <a href=member_page.php>this link</a></p>";
+                                            echo "<p style='font-size:70%;'>You are already logged in as " . $_SESSION['user_email'] . ". To access the member page please use <a href=member_page.php>this link</a> or <a href=logout.php>log out</a>.</p>";
                                         }
                                         ?>
 									</header>
