@@ -159,7 +159,7 @@ $final_cost_subscription = substr($str_cost2, 0, 5);
 											<h2>Chicken Coop</h2>
 										</header>
 										<p>We will deliver the materials and instructions straight to you. All you need is a hammer, screwdriver, and a few hours to set it up.</p>
-										<p><b><?php echo ($valid_code ? '$200' : '$250' ) ?> or <?php echo $final_cost_one_time ?> BTC</b></p>
+										<p><b><?php echo ($valid_code ? '<del>$250</del><p style="color:#FF0000";>$200</p>' : '$250' ) ?> or <?php echo ($valid_code ? '$final_cost_one_time_discount' : '$final_cost_one_time' ) ?> BTC</b></p>
 										
 										<form action="https://test.bitpay.com/checkout" method="post">
 											<input type="hidden" name="action" value="checkout" />
